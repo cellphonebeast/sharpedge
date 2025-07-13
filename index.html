@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sharp Edge - Main Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --light-blue: #dbeafe;
+            --background: #f8fafc;
+            --white: #ffffff;
+            --gray-text: #64748b;
+            --dark-text: #1e293b;
+            --success-green: #22c55e;
+            --warning-yellow: #fbbf24;
+            --error-red: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--dark-text);
+            line-height: 1.5;
+        }
+
+        .header {
+            background: var(--white);
+            height: 64px;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 120px;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            display: none;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-tab {
+            padding: 8px 16px;
+            border-radius: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--gray-text);
+        }
+
+        .nav-tab.active {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .nav-tab:hover {
+            background: var(--light-blue);
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .page-subtitle {
+            color: var(--gray-text);
+            margin-bottom: 32px;
+        }
+
+        .centered-title {
+            text-align: center;
+            margin: 32px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .stat-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-color: var(--light-blue);
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--gray-text);
+            font-weight: 500;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .game-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .game-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .game-header h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+
+        .game-details {
+            margin-bottom: 16px;
+            color: var(--gray-text);
+            font-size: 14px;
+        }
+
+        .game-stats {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 16px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item .stat-number {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            display: block;
+        }
+
+        .stat-item .stat-label {
+            font-size: 12px;
+            color: var(--gray-text);
+            font-weight: 500;
+        }
+
+        .view-analysis-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon"><img src="logo.png" alt="The Sharp Edge" /></div>
+        </div>
+        
+        <div class="nav-tabs">
+            <a href="#" class="nav-tab active">Dashboard</a>
+            <a href="#" class="nav-tab">Games</a>
+            <a href="#" class="nav-tab">Trends</a>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">14</span>
+                <div class="stat-label">Total Games</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">70</span>
+                <div class="stat-label">Batting Metrics</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">112</span>
+                <div class="stat-label">Pitching Metrics</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">280</span>
+                <div class="stat-label">Total Metrics</div>
+            </div>
+        </div>
+
+        <div class="centered-title">
+            <h1 class="page-title">The Sharp Edge</h1>
+            <p class="page-subtitle">MLB Analytics Dashboard</p>
+        </div>
+
+        <div class="games-grid">
+            
+            <div class="game-card" onclick="window.location.href='game_1_mariners_tigers_2025-07-12.html'">
+                <div class="game-header">
+                    <h3>Mariners vs Tigers</h3>
+                </div>
+                <div class="game-details">
+                    <p>SEA at DET at 7:10 PM ET on 7/11/2025</p>
+                </div>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Batting</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Pitching</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Records</span>
+                    </div>
+                </div>
+                <div class="view-analysis-btn">View Analysis →</div>
+            </div>
+            <div class="game-card" onclick="window.location.href='game_2_pirates_twins_2025-07-12.html'">
+                <div class="game-header">
+                    <h3>Pirates vs Twins</h3>
+                </div>
+                <div class="game-details">
+                    <p>PIT at MIN at 7:10 PM ET on 7/11/2025</p>
+                </div>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Batting</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Pitching</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Records</span>
+                    </div>
+                </div>
+                <div class="view-analysis-btn">View Analysis →</div>
+            </div>
+            <div class="game-card" onclick="window.location.href='game_3_braves_cardinals_2025-07-12.html'">
+                <div class="game-header">
+                    <h3>Braves vs Cardinals</h3>
+                </div>
+                <div class="game-details">
+                    <p>ATL at STL at 7:10 PM ET on 7/11/2025</p>
+                </div>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Batting</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Pitching</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Records</span>
+                    </div>
+                </div>
+                <div class="view-analysis-btn">View Analysis →</div>
+            </div>
+            <div class="game-card" onclick="window.location.href='game_4_dodgers_giants_2025-07-12.html'">
+                <div class="game-header">
+                    <h3>Dodgers vs Giants</h3>
+                </div>
+                <div class="game-details">
+                    <p>LAD at SFG at 7:10 PM ET on 7/11/2025</p>
+                </div>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Batting</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Pitching</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Records</span>
+                    </div>
+                </div>
+                <div class="view-analysis-btn">View Analysis →</div>
+            </div>
+            <div class="game-card" onclick="window.location.href='game_5_marlins_orioles_2025-07-12.html'">
+                <div class="game-header">
+                    <h3>Marlins vs Orioles</h3>
+                </div>
+                <div class="game-details">
+                    <p>MIA at BAL at 7:10 PM ET on 7/11/2025</p>
+                </div>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Batting</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Pitching</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Records</span>
+                    </div>
+                </div>
+                <div class="view-analysis-btn">View Analysis →</div>
+            </div>
+            <div class="game-card" onclick="window.location.href='game_6_rays_red sox_2025-07-12.html'">
+                <div class="game-header">
+                    <h3>Rays vs Red Sox</h3>
+                </div>
+                <div class="game-details">
+                    <p>TBR at BOS at 7:10 PM ET on 7/11/2025</p>
+                </div>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Batting</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Pitching</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Records</span>
+                    </div>
+                </div>
+                <div class="view-analysis-btn">View Analysis →</div>
+            </div>
+            <div class="game-card" onclick="window.location.href='game_7_mets_royals_2025-07-12.html'">
+                <div class="game-header">
+                    <h3>Mets vs Royals</h3>
+                </div>
+                <div class="game-details">
+                    <p>NYM at KCR at 7:10 PM ET on 7/11/2025</p>
+                </div>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Batting</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Pitching</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Records</span>
+                    </div>
+                </div>
+                <div class="view-analysis-btn">View Analysis →</div>
+            </div>
+            <div class="game-card" onclick="window.location.href='game_8_rockies_reds_2025-07-12.html'">
+                <div class="game-header">
+                    <h3>Rockies vs Reds</h3>
+                </div>
+                <div class="game-details">
+                    <p>COL at CIN at 7:10 PM ET on 7/11/2025</p>
+                </div>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Batting</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Pitching</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Records</span>
+                    </div>
+                </div>
+                <div class="view-analysis-btn">View Analysis →</div>
+            </div>
+            <div class="game-card" onclick="window.location.href='game_9_nationals_brewers_2025-07-12.html'">
+                <div class="game-header">
+                    <h3>Nationals vs Brewers</h3>
+                </div>
+                <div class="game-details">
+                    <p>WSN at MIL at 7:10 PM ET on 7/11/2025</p>
+                </div>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Batting</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Pitching</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Records</span>
+                    </div>
+                </div>
+                <div class="view-analysis-btn">View Analysis →</div>
+            </div>
+            <div class="game-card" onclick="window.location.href='game_10_guardians_white sox_2025-07-12.html'">
+                <div class="game-header">
+                    <h3>Guardians vs White Sox</h3>
+                </div>
+                <div class="game-details">
+                    <p>CLE at CHW at 7:10 PM ET on 7/11/2025</p>
+                </div>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Batting</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Pitching</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Records</span>
+                    </div>
+                </div>
+                <div class="view-analysis-btn">View Analysis →</div>
+            </div>
+            <div class="game-card" onclick="window.location.href='game_11_rangers_astros_2025-07-12.html'">
+                <div class="game-header">
+                    <h3>Rangers vs Astros</h3>
+                </div>
+                <div class="game-details">
+                    <p>TEX at HOU at 7:10 PM ET on 7/11/2025</p>
+                </div>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Batting</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Pitching</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Records</span>
+                    </div>
+                </div>
+                <div class="view-analysis-btn">View Analysis →</div>
+            </div>
+            <div class="game-card" onclick="window.location.href='game_12_phillies_padres_2025-07-12.html'">
+                <div class="game-header">
+                    <h3>Phillies vs Padres</h3>
+                </div>
+                <div class="game-details">
+                    <p>PHI at SDP at 7:10 PM ET on 7/11/2025</p>
+                </div>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Batting</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Pitching</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Records</span>
+                    </div>
+                </div>
+                <div class="view-analysis-btn">View Analysis →</div>
+            </div>
+            <div class="game-card" onclick="window.location.href='game_13_diamondbacks_angels_2025-07-12.html'">
+                <div class="game-header">
+                    <h3>Diamondbacks vs Angels</h3>
+                </div>
+                <div class="game-details">
+                    <p>ARI at LAA at 7:10 PM ET on 7/11/2025</p>
+                </div>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Batting</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Pitching</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Records</span>
+                    </div>
+                </div>
+                <div class="view-analysis-btn">View Analysis →</div>
+            </div>
+            <div class="game-card" onclick="window.location.href='game_14_blue jays_athletics_2025-07-12.html'">
+                <div class="game-header">
+                    <h3>Blue Jays vs Athletics</h3>
+                </div>
+                <div class="game-details">
+                    <p>TOR at ATH at 7:10 PM ET on 7/11/2025</p>
+                </div>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Batting</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Pitching</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Records</span>
+                    </div>
+                </div>
+                <div class="view-analysis-btn">View Analysis →</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
