@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sharp Edge - 2025-07-12</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --light-blue: #dbeafe;
+            --background: #f8fafc;
+            --white: #ffffff;
+            --gray-text: #64748b;
+            --dark-text: #1e293b;
+            --success-green: #22c55e;
+            --warning-yellow: #fbbf24;
+            --error-red: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--dark-text);
+            line-height: 1.5;
+        }
+
+        .header {
+            background: var(--white);
+            height: 64px;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 120px;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            display: none;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-tab {
+            padding: 8px 16px;
+            border-radius: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-tab.active {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .nav-tab:not(.active) {
+            color: var(--gray-text);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #8b5cf6, #a855f7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 24px;
+            padding: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .main-content {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .page-subtitle {
+            color: var(--gray-text);
+            margin-bottom: 24px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .stat-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-color: var(--light-blue);
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--gray-text);
+            font-weight: 500;
+        }
+
+        .win-probability {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .win-probability-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--dark-text);
+        }
+        
+        .win-probability-content {
+            margin-top: 8px;
+        }
+
+        .line-movement {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .line-movement-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--dark-text);
+        }
+        
+        .line-movement-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        
+        .line-movement-section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .line-data {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .line-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: var(--background);
+            border-radius: 6px;
+        }
+        
+        .line-label {
+            font-weight: 500;
+            color: var(--gray-text);
+            font-size: 14px;
+        }
+        
+        .line-value {
+            font-weight: 600;
+            color: var(--dark-text);
+            font-size: 14px;
+        }
+        
+        .betting-action {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .action-team {
+            padding: 12px;
+            background: var(--background);
+            border-radius: 6px;
+        }
+        
+        .team-name {
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+        
+        .action-stats {
+            font-size: 13px;
+            color: var(--gray-text);
+        }
+        
+        .bets, .money {
+            font-weight: 500;
+        }
+        
+        .differential {
+            font-weight: 600;
+            margin-left: 4px;
+        }
+        
+        .differential.positive {
+            color: var(--success-green);
+        }
+        
+        .differential.negative {
+            color: var(--error-red);
+        }
+        
+        .category-edge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            padding: 8px 12px;
+            background: var(--background);
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .edge-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray-text);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .edge-team {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .ai-analysis {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .analysis-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .analysis-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .ai-badge {
+            background: linear-gradient(135deg, var(--primary-blue), #3b82f6);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .data-table th {
+            background-color: var(--background);
+            font-weight: 600;
+            color: var(--dark-text);
+            font-size: 14px;
+        }
+
+        .data-table td {
+            font-size: 14px;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--light-blue);
+        }
+
+        .arrow-cell {
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            color: var(--primary-blue);
+        }
+
+        .edge-cell {
+            text-align: center;
+            font-weight: bold;
+            color: var(--success-green);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .sidebar-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .insight-item {
+            padding: 8px;
+            border-radius: 6px;
+            background: var(--background);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .confidence-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .confidence-high { background: var(--success-green); }
+        .confidence-medium { background: var(--warning-yellow); }
+        .confidence-low { background: var(--error-red); }
+
+        .projections-table {
+            margin-top: 8px;
+        }
+
+        .projection-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .projection-table th,
+        .projection-table td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .projection-table th {
+            background-color: var(--background);
+            font-weight: 600;
+            color: var(--dark-text);
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .projection-table td {
+            color: var(--gray-text);
+            font-weight: 500;
+        }
+
+        .projection-table tr:hover {
+            background-color: var(--light-blue);
+        }
+
+        .starting-pitchers-table {
+            margin-top: 8px;
+        }
+
+        .pitcher-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .pitcher-table th,
+        .pitcher-table td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .pitcher-table th {
+            background-color: var(--background);
+            font-weight: 600;
+            color: var(--dark-text);
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .pitcher-table td {
+            color: var(--gray-text);
+            font-weight: 500;
+        }
+
+        .pitcher-table tr:hover {
+            background-color: var(--light-blue);
+        }
+
+        .pitcher-table td strong {
+            color: var(--dark-text);
+            font-weight: 600;
+        }
+
+        .bullpen-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .bullpen-team {
+            padding: 12px;
+            background: var(--background);
+            border-radius: 6px;
+        }
+        
+        .team-name-header {
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+        
+        .bullpen-metrics {
+            font-size: 13px;
+            color: var(--gray-text);
+            font-weight: 500;
+        }
+        
+        .bullpen-analysis {
+            padding: 12px;
+            background: var(--light-blue);
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .analysis-label {
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 6px;
+            font-size: 13px;
+        }
+        
+        .analysis-text {
+            font-size: 12px;
+            color: var(--gray-text);
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: 16px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .line-movement-content {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+    
+        .game-navigation {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .main-dashboard-centered {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .nav-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            background: var(--light-blue);
+        }
+        
+        .nav-link.main-dashboard {
+            background: var(--primary-blue);
+            color: white;
+        }
+        
+        .nav-link.main-dashboard:hover {
+            background: #1d4ed8;
+        }
+        
+        .other-games {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-label {
+            color: var(--gray-text);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .line-movement {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .line-movement-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--dark-text);
+        }
+        
+        .line-movement-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        
+        .line-movement-section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .line-data {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .line-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: var(--background);
+            border-radius: 6px;
+        }
+        
+        .line-label {
+            font-weight: 500;
+            color: var(--gray-text);
+            font-size: 14px;
+        }
+        
+        .line-value {
+            font-weight: 600;
+            color: var(--dark-text);
+            font-size: 14px;
+        }
+        
+        .betting-action {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .action-team {
+            padding: 12px;
+            background: var(--background);
+            border-radius: 6px;
+        }
+        
+        .team-name {
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+        
+        .action-stats {
+            font-size: 13px;
+            color: var(--gray-text);
+        }
+        
+        .bets, .money {
+            font-weight: 500;
+        }
+        
+        .differential {
+            font-weight: 600;
+            margin-left: 4px;
+        }
+        
+        .differential.positive {
+            color: var(--success-green);
+        }
+        
+        .differential.negative {
+            color: var(--error-red);
+        }
+        
+        .category-edge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            padding: 8px 12px;
+            background: var(--background);
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .edge-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray-text);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .edge-team {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+        
+        @media (max-width: 768px) {
+            .game-navigation {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .other-games {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .line-movement-content {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+    
+</style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon"><img src="logo.png" alt="The Sharp Edge" /></div>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab">Games</button>
+            <button class="nav-tab active">The Sharp Edge</button>
+            <button class="nav-tab">Trends</button>
+        </div>
+        
+        <div class="header-right">
+            <div class="avatar">AI</div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <main class="main-content">
+            <h1 class="page-title">Nationals at Brewers at 7:10 PM ET on 7/11/2025</h1>
+            <p class="page-subtitle">Nationals vs Brewers Analysis</p>
+            
+            <div class="line-movement">
+                <div class="line-movement-header">
+                    <h3>Line Movement</h3>
+                </div>
+                <div class="line-movement-content">
+                    <div class="line-movement-section">
+                        <h4>Opening vs Current Lines</h4>
+                        <div class="line-data">
+                            <div class="line-item">
+                                <span class="line-label">Opening:</span>
+                                <span class="line-value">--</span>
+                            </div>
+                            <div class="line-item">
+                                <span class="line-label">Current:</span>
+                                <span class="line-value">--</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-movement-section">
+                        <h4>Betting Action</h4>
+                        <div class="betting-action">
+                            <div class="action-team">
+                                <div class="team-name">Nationals:</div>
+                                <div class="action-stats">
+                                    <span class="bets">-- bets</span> / 
+                                    <span class="money">-- money</span>
+                                    <span class="differential">--</span>
+                                </div>
+                            </div>
+                            <div class="action-team">
+                                <div class="team-name">Brewers:</div>
+                                <div class="action-stats">
+                                    <span class="bets">-- bets</span> / 
+                                    <span class="money">-- money</span>
+                                    <span class="differential">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="win-probability">
+                <div class="win-probability-header">
+                    <h3>Win Probability</h3>
+                </div>
+                <div class="win-probability-content">
+                    <table class="projection-table">
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>Nationals</th>
+                                <th>Brewers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sharp Edge Model</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                            <tr>
+                                <td>Market Consensus</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                            <tr>
+                                <td>Edge Differential</td>
+                                <td colspan="2" style="text-align: center;">--</td>
+                            </tr>
+                            <tr>
+                                <td>Nationals Run Line L10</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                            <tr>
+                                <td>Brewers Run Line L10</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            
+    <div class="game-navigation">
+        <div class="main-dashboard-centered">
+            <a href="sharp_edge_dashboard_2025-07-12.html" class="nav-link main-dashboard">← Main Dashboard</a>
+        </div>
+        <div class="other-games">
+            <span class="nav-label">Other Games:</span>
+            <a href="game_1_mariners_tigers_2025-07-12.html" class="nav-link">Mariners vs Tigers</a> | <a href="game_2_pirates_twins_2025-07-12.html" class="nav-link">Pirates vs Twins</a> | <a href="game_3_braves_cardinals_2025-07-12.html" class="nav-link">Braves vs Cardinals</a> | <a href="game_4_dodgers_giants_2025-07-12.html" class="nav-link">Dodgers vs Giants</a> | <a href="game_5_marlins_orioles_2025-07-12.html" class="nav-link">Marlins vs Orioles</a> | <a href="game_6_rays_red sox_2025-07-12.html" class="nav-link">Rays vs Red Sox</a> | <a href="game_7_mets_royals_2025-07-12.html" class="nav-link">Mets vs Royals</a> | <a href="game_8_rockies_reds_2025-07-12.html" class="nav-link">Rockies vs Reds</a> | <a href="game_10_guardians_white sox_2025-07-12.html" class="nav-link">Guardians vs White Sox</a> | <a href="game_11_rangers_astros_2025-07-12.html" class="nav-link">Rangers vs Astros</a> | <a href="game_12_phillies_padres_2025-07-12.html" class="nav-link">Phillies vs Padres</a> | <a href="game_13_diamondbacks_angels_2025-07-12.html" class="nav-link">Diamondbacks vs Angels</a> | <a href="game_14_blue jays_athletics_2025-07-12.html" class="nav-link">Blue Jays vs Athletics</a>
+        </div>
+    </div>
+    
+
+            <div class="ai-analysis">
+                <div class="analysis-header">
+                    <h2 class="analysis-title">Batting Analysis</h2>
+                    <div class="ai-badge">BATTING</div>
+                </div>
+                <div class="category-edge">
+                    <span class="edge-label">EDGE:</span>
+                    <span class="edge-team">Brewers</span>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th colspan="3">Last 7 Days</th>
+                            <th colspan="3">Season</th>
+                            <th>Edge</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>Nationals</th>
+                            <th>Edge</th>
+                            <th>Brewers</th>
+                            <th>Nationals</th>
+                            <th>Edge</th>
+                            <th>Brewers</th>
+                            <th>Advantage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr>
+                <td><strong>Win %</strong></td>
+                <td>0.358</td>
+                <td class="arrow-cell">▶</td>
+                <td>0.633</td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td class="edge-cell"><strong>Brewers</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Runs Scored per Game</strong></td>
+                <td>3.500</td>
+                <td class="arrow-cell">▶</td>
+                <td>4.700</td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td class="edge-cell"><strong>Brewers</strong></td>
+            </tr>
+            <tr>
+                <td><strong>OBP</strong></td>
+                <td>0.250</td>
+                <td class="arrow-cell">▶</td>
+                <td>0.270</td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td class="edge-cell"><strong>Brewers</strong></td>
+            </tr>
+            <tr>
+                <td><strong>OPS</strong></td>
+                <td>0.556</td>
+                <td class="arrow-cell">▶</td>
+                <td>0.631</td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td class="edge-cell"><strong>Brewers</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Batting Average</strong></td>
+                <td>0.250</td>
+                <td class="arrow-cell">0</td>
+                <td>0.250</td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td class="edge-cell"><strong>Even</strong></td>
+            </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="ai-analysis" style="margin-top: 24px;">
+                <div class="analysis-header">
+                    <h2 class="analysis-title">Pitching Analysis</h2>
+                    <div class="ai-badge">PITCHING</div>
+                </div>
+                <div class="category-edge">
+                    <span class="edge-label">EDGE:</span>
+                    <span class="edge-team">Brewers</span>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th colspan="3">Last 7 Days</th>
+                            <th colspan="3">Season</th>
+                            <th>Edge</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>Nationals</th>
+                            <th>Edge</th>
+                            <th>Brewers</th>
+                            <th>Nationals</th>
+                            <th>Edge</th>
+                            <th>Brewers</th>
+                            <th>Advantage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr>
+                <td><strong>ERA</strong></td>
+                <td>2.000</td>
+                <td class="arrow-cell">▶</td>
+                <td>1.220</td>
+                <td>6.550</td>
+                <td class="arrow-cell">▶</td>
+                <td>2.120</td>
+                <td class="edge-cell"><strong>Brewers</strong></td>
+            </tr>
+            <tr>
+                <td><strong>SLG</strong></td>
+                <td>0.306</td>
+                <td class="arrow-cell">▶</td>
+                <td>0.361</td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td class="edge-cell"><strong>Brewers</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Strikeouts per Game</strong></td>
+                <td>6.500</td>
+                <td class="arrow-cell">◀</td>
+                <td>6.800</td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td class="edge-cell"><strong>Nationals</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Walks per Game</strong></td>
+                <td>3.000</td>
+                <td class="arrow-cell">◀</td>
+                <td>2.300</td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td class="edge-cell"><strong>Nationals</strong></td>
+            </tr>
+            <tr>
+                <td><strong>WHIP</strong></td>
+                <td>1.000</td>
+                <td class="arrow-cell">▶</td>
+                <td>0.780</td>
+                <td>1.380</td>
+                <td class="arrow-cell">▶</td>
+                <td>0.990</td>
+                <td class="edge-cell"><strong>Brewers</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Opponent Batting Average</strong></td>
+                <td>0.259</td>
+                <td class="arrow-cell">▶</td>
+                <td>0.171</td>
+                <td>0.370</td>
+                <td class="arrow-cell">▶</td>
+                <td>0.248</td>
+                <td class="edge-cell"><strong>Brewers</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Opponent Runs per Game</strong></td>
+                <td>2.000</td>
+                <td class="arrow-cell">▶</td>
+                <td>1.200</td>
+                <td>7.000</td>
+                <td class="arrow-cell">▶</td>
+                <td>2.500</td>
+                <td class="edge-cell"><strong>Brewers</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Opponent Strikeouts per Game</strong></td>
+                <td>11.000</td>
+                <td class="arrow-cell">▶</td>
+                <td>12.200</td>
+                <td>11.500</td>
+                <td class="arrow-cell">▶</td>
+                <td>12.500</td>
+                <td class="edge-cell"><strong>Brewers</strong></td>
+            </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="ai-analysis" style="margin-top: 24px;">
+                <div class="analysis-header">
+                    <h2 class="analysis-title">Team Records</h2>
+                    <div class="ai-badge">RECORDS</div>
+                </div>
+                <div class="category-edge">
+                    <span class="edge-label">EDGE:</span>
+                    <span class="edge-team">Even</span>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th colspan="3">Last 7 Days</th>
+                            <th colspan="3">Season</th>
+                            <th>Edge</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>Nationals</th>
+                            <th>Edge</th>
+                            <th>Brewers</th>
+                            <th>Nationals</th>
+                            <th>Edge</th>
+                            <th>Brewers</th>
+                            <th>Advantage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr>
+                <td><strong>TEAM RECORDS</strong></td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td class="edge-cell"><strong>Even</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Season Record</strong></td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td class="edge-cell"><strong>Even</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Away Record</strong></td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td class="edge-cell"><strong>Even</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Home Record</strong></td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td class="edge-cell"><strong>Even</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Games Back</strong></td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td class="edge-cell"><strong>Even</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Last 10</strong></td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td class="edge-cell"><strong>Even</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Current Streak</strong></td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td class="arrow-cell">=</td>
+                <td>0.000</td>
+                <td class="edge-cell"><strong>Even</strong></td>
+            </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="ai-analysis" style="margin-top: 24px;">
+                <div class="analysis-header">
+                    <h2 class="analysis-title">AI Insights</h2>
+                    <div class="ai-badge">INSIGHTS</div>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Analysis Type</th>
+                            <th>Metric</th>
+                            <th>Value</th>
+                            <th>Confidence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Performance Edge</strong></td>
+                            <td>2 metrics favor Nationals in last 7 days</td>
+                            <td>2/20</td>
+                            <td><span class="confidence-indicator confidence-high"></span>High</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Performance Edge</strong></td>
+                            <td>10 metrics favor Brewers in last 7 days</td>
+                            <td>10/20</td>
+                            <td><span class="confidence-indicator confidence-high"></span>High</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Data Coverage</strong></td>
+                            <td>Analysis covers 20 key performance metrics</td>
+                            <td>20 metrics</td>
+                            <td><span class="confidence-indicator confidence-medium"></span>Medium</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Over/Under H2H</strong></td>
+                            <td>Nationals vs Brewers: --O--U</td>
+                            <td>--</td>
+                            <td><span class="confidence-indicator confidence-low"></span>Low</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nationals O/U Overall</strong></td>
+                            <td>Nationals overall L10: --O--U</td>
+                            <td>--</td>
+                            <td><span class="confidence-indicator confidence-low"></span>Low</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Brewers O/U Overall</strong></td>
+                            <td>Brewers overall L10: --O--U</td>
+                            <td>--</td>
+                            <td><span class="confidence-indicator confidence-low"></span>Low</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <h3>Starting Pitchers</h3>
+                <div class="starting-pitchers-table">
+                    <table class="pitcher-table">
+                        <thead>
+                            <tr>
+                                <th>Team</th>
+                                <th>Pitcher</th>
+                                <th>ERA</th>
+                                <th>Record</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Nationals</strong></td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Brewers</strong></td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="sidebar-card">
+                <h3>Bullpen Analysis</h3>
+                <div class="bullpen-stats">
+                    <div class="bullpen-team">
+                        <div class="team-name-header">Nationals Bullpen:</div>
+                        <div class="bullpen-metrics">ERA --, WHIP --</div>
+                    </div>
+                    <div class="bullpen-team">
+                        <div class="team-name-header">Brewers Bullpen:</div>
+                        <div class="bullpen-metrics">ERA --, WHIP --</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-card">
+                <h3>Projections</h3>
+                <div class="projections-table">
+                    <table class="projection-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Nationals</th>
+                                <th>Brewers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Win Probability</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                            <tr>
+                                <td>Projected Score</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                            <tr>
+                                <td>Total Runs</td>
+                                <td colspan="2" style="text-align: center;">--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="sidebar-card">
+                <h3>9th Inning & Hits Markets</h3>
+                <div class="hits-markets-table">
+                    <table class="projection-table">
+                        <thead>
+                            <tr>
+                                <th>Market</th>
+                                <th>Nationals</th>
+                                <th>Brewers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>9th Inning Score</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                            <tr>
+                                <td>Total Hits O/U</td>
+                                <td colspan="2" style="text-align: center;">--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="sidebar-card">
+                <h3>Edge Breakdown</h3>
+                <div style="margin-bottom: 8px;">
+                    <span class="confidence-indicator confidence-high"></span>
+                    Batting: Nationals 0 - 4 Brewers
+                </div>
+                <div style="margin-bottom: 8px;">
+                    <span class="confidence-indicator confidence-medium"></span>
+                    Pitching: Nationals 2 - 6 Brewers
+                </div>
+                <div>
+                    <span class="confidence-indicator confidence-low"></span>
+                    Records: Nationals 0 - 0 Brewers
+                </div>
+            </div>
+        </aside>
+    </div>
+</body>
+</html>
