@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games - The Sharp Edge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --light-blue: #dbeafe;
+            --background: #f8fafc;
+            --white: #ffffff;
+            --gray-text: #64748b;
+            --dark-text: #1e293b;
+            --success-green: #22c55e;
+            --warning-yellow: #fbbf24;
+            --error-red: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--dark-text);
+            line-height: 1.5;
+        }
+
+        .header {
+            background: var(--white);
+            height: 64px;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 120px;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .logo-icon:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-tab {
+            padding: 8px 16px;
+            border-radius: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--gray-text);
+        }
+
+        .nav-tab.active {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .nav-tab:hover {
+            background: var(--light-blue);
+        }
+
+        .nav-tab.active:hover {
+            background: #1d4ed8;
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark-text);
+        }
+
+        .page-subtitle {
+            color: var(--gray-text);
+            font-size: 16px;
+        }
+
+        .games-table-container {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .games-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .games-table th {
+            background: var(--background);
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--dark-text);
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .games-table td {
+            padding: 16px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 14px;
+        }
+
+        .game-row {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .game-row:hover {
+            background: var(--light-blue);
+        }
+
+        .time-cell {
+            font-weight: 600;
+            color: var(--primary-blue);
+            min-width: 80px;
+        }
+
+        .matchup-cell {
+            min-width: 200px;
+        }
+
+        .teams-display {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .away-team {
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .vs-divider {
+            color: var(--gray-text);
+            font-size: 12px;
+        }
+
+        .home-team {
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .spread-cell, .total-cell {
+            font-weight: 500;
+            color: var(--gray-text);
+            min-width: 100px;
+        }
+
+        .metrics-cell {
+            font-weight: 600;
+            color: var(--primary-blue);
+            min-width: 100px;
+        }
+
+        .action-cell {
+            min-width: 120px;
+        }
+
+        .view-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .view-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: var(--gray-text);
+            font-size: 14px;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .games-table-container {
+                overflow-x: auto;
+            }
+            
+            .games-table {
+                min-width: 600px;
+            }
+            
+            .games-table th,
+            .games-table td {
+                padding: 12px 8px;
+            }
+            
+            .matchup-cell {
+                min-width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="https://beastsportspicks.com/" target="_blank" class="logo-icon"><img src="logo.png" alt="The Sharp Edge" /></a>
+        </div>
+        
+        <div class="nav-tabs">
+            <a href="games.html" class="nav-tab active">Games</a>
+            <a href="index.html" class="nav-tab">Dashboard</a>
+            <a href="sharp_plays.html" class="nav-tab">Sharp Plays</a>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="page-header">
+            <h1 class="page-title">Today's Games</h1>
+            <p class="page-subtitle">Click any game for detailed analytics and betting insights</p>
+        </div>
+
+        <div class="games-table-container">
+            <table class="games-table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Matchup</th>
+                        <th>Spread</th>
+                        <th>Total</th>
+                        <th>Metrics</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr class="game-row" onclick="window.location.href='game_1_sfg_tor_2025-07-19.html'">
+                <td class="time-cell">7:10 PM ET</td>
+                <td class="matchup-cell">
+                    <div class="teams-display">
+                        <span class="away-team">SFG</span>
+                        <span class="vs-divider">@</span>
+                        <span class="home-team">TOR</span>
+                    </div>
+                </td>
+                <td class="spread-cell">SFG +1.5</td>
+                <td class="total-cell">8.5</td>
+                <td class="metrics-cell">13</td>
+                <td class="action-cell">
+                    <div class="view-btn">View Analysis</div>
+                </td>
+            </tr>
+            <tr class="game-row" onclick="window.location.href='game_2_kcr_mia_2025-07-19.html'">
+                <td class="time-cell">7:10 PM ET</td>
+                <td class="matchup-cell">
+                    <div class="teams-display">
+                        <span class="away-team">KCR</span>
+                        <span class="vs-divider">@</span>
+                        <span class="home-team">MIA</span>
+                    </div>
+                </td>
+                <td class="spread-cell">MIA -2.5</td>
+                <td class="total-cell">9.0</td>
+                <td class="metrics-cell">13</td>
+                <td class="action-cell">
+                    <div class="view-btn">View Analysis</div>
+                </td>
+            </tr>
+            <tr class="game-row" onclick="window.location.href='game_3_cin_nym_2025-07-19.html'">
+                <td class="time-cell">7:10 PM ET</td>
+                <td class="matchup-cell">
+                    <div class="teams-display">
+                        <span class="away-team">CIN</span>
+                        <span class="vs-divider">@</span>
+                        <span class="home-team">NYM</span>
+                    </div>
+                </td>
+                <td class="spread-cell">CIN +3.5</td>
+                <td class="total-cell">9.5</td>
+                <td class="metrics-cell">13</td>
+                <td class="action-cell">
+                    <div class="view-btn">View Analysis</div>
+                </td>
+            </tr>
+            <tr class="game-row" onclick="window.location.href='game_4_laa_phi_2025-07-19.html'">
+                <td class="time-cell">7:10 PM ET</td>
+                <td class="matchup-cell">
+                    <div class="teams-display">
+                        <span class="away-team">LAA</span>
+                        <span class="vs-divider">@</span>
+                        <span class="home-team">PHI</span>
+                    </div>
+                </td>
+                <td class="spread-cell">PHI -1.5</td>
+                <td class="total-cell">10.0</td>
+                <td class="metrics-cell">13</td>
+                <td class="action-cell">
+                    <div class="view-btn">View Analysis</div>
+                </td>
+            </tr>
+            <tr class="game-row" onclick="window.location.href='game_5_chw_pit_2025-07-19.html'">
+                <td class="time-cell">7:10 PM ET</td>
+                <td class="matchup-cell">
+                    <div class="teams-display">
+                        <span class="away-team">CHW</span>
+                        <span class="vs-divider">@</span>
+                        <span class="home-team">PIT</span>
+                    </div>
+                </td>
+                <td class="spread-cell">CHW +2.5</td>
+                <td class="total-cell">8.5</td>
+                <td class="metrics-cell">13</td>
+                <td class="action-cell">
+                    <div class="view-btn">View Analysis</div>
+                </td>
+            </tr>
+            <tr class="game-row" onclick="window.location.href='game_6_sdp_wsn_2025-07-19.html'">
+                <td class="time-cell">7:10 PM ET</td>
+                <td class="matchup-cell">
+                    <div class="teams-display">
+                        <span class="away-team">SDP</span>
+                        <span class="vs-divider">@</span>
+                        <span class="home-team">WSN</span>
+                    </div>
+                </td>
+                <td class="spread-cell">WSN -3.5</td>
+                <td class="total-cell">9.0</td>
+                <td class="metrics-cell">13</td>
+                <td class="action-cell">
+                    <div class="view-btn">View Analysis</div>
+                </td>
+            </tr>
+            <tr class="game-row" onclick="window.location.href='game_7_bal_tbr_2025-07-19.html'">
+                <td class="time-cell">7:10 PM ET</td>
+                <td class="matchup-cell">
+                    <div class="teams-display">
+                        <span class="away-team">BAL</span>
+                        <span class="vs-divider">@</span>
+                        <span class="home-team">TBR</span>
+                    </div>
+                </td>
+                <td class="spread-cell">BAL +1.5</td>
+                <td class="total-cell">9.5</td>
+                <td class="metrics-cell">13</td>
+                <td class="action-cell">
+                    <div class="view-btn">View Analysis</div>
+                </td>
+            </tr>
+            <tr class="game-row" onclick="window.location.href='game_8_det_tex_2025-07-19.html'">
+                <td class="time-cell">7:10 PM ET</td>
+                <td class="matchup-cell">
+                    <div class="teams-display">
+                        <span class="away-team">DET</span>
+                        <span class="vs-divider">@</span>
+                        <span class="home-team">TEX</span>
+                    </div>
+                </td>
+                <td class="spread-cell">TEX -2.5</td>
+                <td class="total-cell">10.0</td>
+                <td class="metrics-cell">13</td>
+                <td class="action-cell">
+                    <div class="view-btn">View Analysis</div>
+                </td>
+            </tr>
+            <tr class="game-row" onclick="window.location.href='game_9_ath_cle_2025-07-19.html'">
+                <td class="time-cell">7:10 PM ET</td>
+                <td class="matchup-cell">
+                    <div class="teams-display">
+                        <span class="away-team">ATH</span>
+                        <span class="vs-divider">@</span>
+                        <span class="home-team">CLE</span>
+                    </div>
+                </td>
+                <td class="spread-cell">ATH +3.5</td>
+                <td class="total-cell">8.5</td>
+                <td class="metrics-cell">13</td>
+                <td class="action-cell">
+                    <div class="view-btn">View Analysis</div>
+                </td>
+            </tr>
+            <tr class="game-row" onclick="window.location.href='game_10_bos_chc_2025-07-19.html'">
+                <td class="time-cell">7:10 PM ET</td>
+                <td class="matchup-cell">
+                    <div class="teams-display">
+                        <span class="away-team">BOS</span>
+                        <span class="vs-divider">@</span>
+                        <span class="home-team">CHC</span>
+                    </div>
+                </td>
+                <td class="spread-cell">CHC -1.5</td>
+                <td class="total-cell">9.0</td>
+                <td class="metrics-cell">13</td>
+                <td class="action-cell">
+                    <div class="view-btn">View Analysis</div>
+                </td>
+            </tr>
+            <tr class="game-row" onclick="window.location.href='game_11_nyy_atl_2025-07-19.html'">
+                <td class="time-cell">7:10 PM ET</td>
+                <td class="matchup-cell">
+                    <div class="teams-display">
+                        <span class="away-team">NYY</span>
+                        <span class="vs-divider">@</span>
+                        <span class="home-team">ATL</span>
+                    </div>
+                </td>
+                <td class="spread-cell">NYY +2.5</td>
+                <td class="total-cell">9.5</td>
+                <td class="metrics-cell">13</td>
+                <td class="action-cell">
+                    <div class="view-btn">View Analysis</div>
+                </td>
+            </tr>
+            <tr class="game-row" onclick="window.location.href='game_12_stl_ari_2025-07-19.html'">
+                <td class="time-cell">7:10 PM ET</td>
+                <td class="matchup-cell">
+                    <div class="teams-display">
+                        <span class="away-team">STL</span>
+                        <span class="vs-divider">@</span>
+                        <span class="home-team">ARI</span>
+                    </div>
+                </td>
+                <td class="spread-cell">ARI -3.5</td>
+                <td class="total-cell">10.0</td>
+                <td class="metrics-cell">13</td>
+                <td class="action-cell">
+                    <div class="view-btn">View Analysis</div>
+                </td>
+            </tr>
+            <tr class="game-row" onclick="window.location.href='game_13_min_col_2025-07-19.html'">
+                <td class="time-cell">7:10 PM ET</td>
+                <td class="matchup-cell">
+                    <div class="teams-display">
+                        <span class="away-team">MIN</span>
+                        <span class="vs-divider">@</span>
+                        <span class="home-team">COL</span>
+                    </div>
+                </td>
+                <td class="spread-cell">MIN +1.5</td>
+                <td class="total-cell">8.5</td>
+                <td class="metrics-cell">13</td>
+                <td class="action-cell">
+                    <div class="view-btn">View Analysis</div>
+                </td>
+            </tr>
+            <tr class="game-row" onclick="window.location.href='game_14_mil_lad_2025-07-19.html'">
+                <td class="time-cell">7:10 PM ET</td>
+                <td class="matchup-cell">
+                    <div class="teams-display">
+                        <span class="away-team">MIL</span>
+                        <span class="vs-divider">@</span>
+                        <span class="home-team">LAD</span>
+                    </div>
+                </td>
+                <td class="spread-cell">LAD -2.5</td>
+                <td class="total-cell">9.0</td>
+                <td class="metrics-cell">13</td>
+                <td class="action-cell">
+                    <div class="view-btn">View Analysis</div>
+                </td>
+            </tr>
+            <tr class="game-row" onclick="window.location.href='game_15_hou_sea_2025-07-19.html'">
+                <td class="time-cell">7:10 PM ET</td>
+                <td class="matchup-cell">
+                    <div class="teams-display">
+                        <span class="away-team">HOU</span>
+                        <span class="vs-divider">@</span>
+                        <span class="home-team">SEA</span>
+                    </div>
+                </td>
+                <td class="spread-cell">HOU +3.5</td>
+                <td class="total-cell">9.5</td>
+                <td class="metrics-cell">13</td>
+                <td class="action-cell">
+                    <div class="view-btn">View Analysis</div>
+                </td>
+            </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="last-updated">
+            Last updated: 08:40 AM
+        </div>
+    </div>
+</body>
+</html>
