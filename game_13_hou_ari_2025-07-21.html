@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 
+    DESIGN-FIRST COMPLIANCE - COMPLETE HTML FROM design-first.md:
+    - Source: Complete HTML/CSS code from design-first.md
+    - Teams: HOU vs ARI
+    - Design Philosophy: Clean, professional, data-focused with sports aesthetic
+    - Primary Color: #1e40af (Blue 700)
+    - Font Family: Inter
+    - Logo Link: https://beastsportspicks.com/
+    - Right Panel Order: Starting Pitchers, Bullpen Analysis, Projections, 9th Inning & Hits Markets, Edge Breakdown
+    -->
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sharp Edge - Houston Astros vs Arizona Diamondbacks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bar_chart.css">
+    <style>
+        :root {
+            /* Primary Colors */
+            --primary-blue: #1e40af;
+            --primary-blue-dark: #1d4ed8;
+            --primary-blue-light: #3b82f6;
+            --light-blue: #dbeafe;
+            --light-blue-hover: #bfdbfe;
+            
+            /* Neutral Colors */
+            --background: #f8fafc;
+            --background-alt: #f1f5f9;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            
+            /* Text Colors */
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-tertiary: #64748b;
+            --text-light: #94a3b8;
+            --text-white: #ffffff;
+            
+            /* Status Colors */
+            --success-green: #22c55e;
+            --success-green-light: #dcfce7;
+            --warning-yellow: #fbbf24;
+            --warning-yellow-light: #fef3c7;
+            --error-red: #ef4444;
+            --error-red-light: #fee2e2;
+            --info-blue: #3b82f6;
+            --info-blue-light: #dbeafe;
+            
+            /* Border Colors */
+            --border-primary: #e2e8f0;
+            --border-secondary: #cbd5e1;
+            --border-light: #f1f5f9;
+            
+            /* Shadow Colors */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            /* Typography Scale */
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.34rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            --font-size-5xl: 3rem;
+            
+            /* Line Heights */
+            --line-height-tight: 1.34;
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.625;
+            --line-height-loose: 2;
+            
+            /* Spacing Scale */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            --spacing-3xl: 4rem;
+            
+            /* Border Radius */
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            
+            /* Transitions */
+            --transition-fast: 0.15s ease;
+            --transition-normal: 0.2s ease;
+            --transition-slow: 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: var(--line-height-normal);
+            font-size: var(--font-size-base);
+        }
+
+        .header {
+            background: var(--white);
+            height: 64px;
+            border-bottom: 1px solid var(--border-primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .logo-icon {
+            display: block;
+            transition: var(--transition-normal);
+        }
+
+        .logo-icon img {
+            width: 120px;
+            height: auto;
+            transition: var(--transition-normal);
+        }
+
+        .logo-icon:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .nav-tab {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition-normal);
+            color: var(--text-tertiary);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+        }
+
+        .nav-tab.active {
+            background: var(--primary-blue);
+            color: var(--text-white);
+        }
+
+        .nav-tab:hover {
+            background: var(--light-blue);
+        }
+
+        .nav-tab.active:hover {
+            background: var(--primary-blue-dark);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-white);
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+            transition: var(--transition-normal);
+        }
+
+        .avatar:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: var(--spacing-xl);
+            padding: var(--spacing-xl);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .main-content {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .page-title {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+            line-height: var(--line-height-tight);
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-xl);
+            font-size: var(--font-size-lg);
+        }
+
+        .line-movement {
+            background: var(--white);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+        }
+
+        .line-movement:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-blue-light);
+        }
+
+        .line-movement-header h3 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+
+        .line-movement-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .line-movement-section h4 {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-md);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .line-data {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .line-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--background-alt);
+            border-radius: var(--radius-md);
+            transition: var(--transition-fast);
+        }
+
+        .line-item:hover {
+            background: var(--gray-100);
+        }
+
+        .betting-action {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .betting-visual {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            border: 1px solid var(--border-primary);
+        }
+
+        .betting-header {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .betting-type {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .betting-team-row {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-sm) var(--spacing-md);
+            margin-bottom: var(--spacing-xs);
+            background: var(--background-alt);
+            border-radius: var(--radius-md);
+        }
+
+        .betting-team-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            min-width: 40px;
+        }
+
+        .betting-bar-container {
+            flex: 1;
+            height: 24px;
+            background: var(--gray-200);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .betting-bar-fill {
+            height: 100%;
+            background: var(--gray-300);
+            transition: var(--transition-normal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .betting-bar-fill.advantage {
+            background: linear-gradient(135deg, var(--success-green), #10b981);
+            color: var(--text-white);
+        }
+
+        .betting-bars {
+            display: flex;
+            height: 40px;
+            background: var(--background-alt);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .betting-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: var(--text-white);
+            transition: var(--transition-normal);
+        }
+
+        .betting-bar.disadvantage {
+            background: var(--gray-300);
+            color: var(--text-secondary);
+        }
+
+        .betting-bar.advantage {
+            background: linear-gradient(135deg, var(--success-green), #10b981);
+        }
+
+        .betting-bar:hover {
+            transform: scale(1.02);
+            z-index: 1;
+        }
+
+        .betting-legend {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: var(--font-size-sm);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-color.disadvantage {
+            background: var(--gray-300);
+        }
+
+        .legend-color.advantage {
+            background: var(--success-green);
+        }
+
+        .legend-text {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .win-probability {
+            background: var(--white);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+        }
+
+        .win-probability:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-blue-light);
+        }
+
+        .win-probability-header h3 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+
+        .ai-analysis {
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+        }
+
+        .ai-analysis:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-blue-light);
+        }
+
+        .analysis-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .analysis-header.pitching-layout {
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .analysis-header.pitching-layout .analysis-title-row {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .analysis-title {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .ai-badge {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-light));
+            color: var(--text-white);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .category-edge {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+            font-weight: 600;
+        }
+
+        .edge-label {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .edge-team {
+            color: var(--primary-blue);
+            font-size: var(--font-size-lg);
+        }
+
+        .comparison-card {
+            background: var(--white);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius-xl);
+            margin-top: var(--spacing-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+        }
+
+        .comparison-card.batting {
+            position: relative;
+        }
+
+        .comparison-card.batting .values-container {
+            position: relative;
+        }
+
+
+        .comparison-card.pitching {
+            position: relative;
+        }
+
+        .comparison-card.pitching .values-container {
+            position: relative;
+        }
+
+
+
+        .ai-badge.pitching-icon {
+            background: none !important;
+            background-image: url('pitcher.png') !important;
+            background-size: contain !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            width: 60px !important;
+            height: 40px !important;
+            opacity: 0.3 !important;
+            color: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .ai-badge.batting-icon {
+            background: none !important;
+            background-image: url('batter.png') !important;
+            background-size: contain !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            width: 60px !important;
+            height: 40px !important;
+            opacity: 0.3 !important;
+            color: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .sidebar-card h3.pitching-title {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .sidebar-card .pitcher-icon {
+            width: 30px;
+            height: 20px;
+            background-image: url('pitcher.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.4;
+        }
+
+        .projections-icon-main {
+            width: 36px;
+            height: 24px;
+            background-image: url('projections.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.4;
+            margin-left: var(--spacing-sm);
+            align-self: center;
+        }
+
+        .ai-badge.records-icon {
+            background: none !important;
+            background-image: url('winloss.png') !important;
+            background-size: contain !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            width: 72px !important;
+            height: 48px !important;
+            opacity: 0.3 !important;
+            color: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .analysis-header.batting-layout {
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .analysis-header.batting-layout .analysis-title-row {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .analysis-header.records-layout {
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .analysis-header.records-layout .analysis-title-row {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .win-probability-header.win-probability-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .win-probability-header.win-probability-layout .analysis-title-row {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .win-probability-header.win-probability-layout .category-edge {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+            font-weight: 600;
+        }
+
+
+        .comparison-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
+        }
+
+        .card-header {
+            background: var(--background-alt);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-bottom: 1px solid var(--border-primary);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .timeframe-labels {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .timeframe-primary {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .timeframe-secondary {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        .team-headers {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .team-header {
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .comparison-content {
+            padding: var(--spacing-lg);
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+            padding: var(--spacing-md) 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .values-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .team-value {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .value-primary {
+            font-weight: 400;
+            color: var(--text-primary);
+            font-size: var(--font-size-lg);
+        }
+
+        .value-primary.advantage {
+            font-weight: 600;
+        }
+
+        .value-secondary {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        .vs-separator {
+            color: var(--text-tertiary);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+        }
+
+        .sidebar-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-blue-light);
+        }
+
+        .sidebar-card h3 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+
+        .projection-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: var(--font-size-sm);
+        }
+
+        .projection-table th,
+        .projection-table td {
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-align: left;
+            border-bottom: 1px solid var(--border-primary);
+            transition: var(--transition-fast);
+        }
+
+        .projection-table tr:hover {
+            background: var(--background-alt);
+        }
+
+        .projection-table th {
+            background-color: var(--background-alt);
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: var(--font-size-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .projection-table td {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .projection-table td strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .pitcher-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: var(--font-size-sm);
+        }
+
+        .pitcher-table th,
+        .pitcher-table td {
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-align: left;
+            border-bottom: 1px solid var(--border-primary);
+            transition: var(--transition-fast);
+        }
+
+        .pitcher-table th {
+            background-color: var(--background-alt);
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: var(--font-size-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pitcher-table td {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .pitcher-table tr:hover {
+            background-color: var(--background-alt);
+            transform: scale(1.01);
+        }
+
+        .pitcher-table td strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .bullpen-stats {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .bullpen-team {
+            padding: var(--spacing-md);
+            background: var(--background-alt);
+            border-radius: var(--radius-md);
+            transition: var(--transition-fast);
+        }
+
+        .bullpen-team:hover {
+            background: var(--gray-100);
+        }
+
+        .team-name-header {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-size-sm);
+        }
+
+        .bullpen-metrics {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .confidence-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: var(--spacing-sm);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .confidence-high { background: var(--success-green); }
+        .confidence-medium { background: var(--warning-yellow); }
+        .confidence-low { background: var(--error-red); }
+
+        .insights-table {
+            margin-top: var(--spacing-md);
+        }
+
+        .insights-table .projection-table {
+            font-size: var(--font-size-sm);
+        }
+
+        .insights-table td {
+            padding: var(--spacing-md) var(--spacing-sm);
+            vertical-align: top;
+        }
+
+        .insights-table td:nth-child(2) {
+            max-width: 300px;
+            word-wrap: break-word;
+        }
+
+        .game-navigation {
+            margin-top: var(--spacing-xl);
+            padding: var(--spacing-lg);
+            background: var(--background-alt);
+            border-radius: var(--radius-lg);
+            text-align: center;
+        }
+
+        .main-dashboard-centered {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .nav-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            transition: var(--transition-normal);
+        }
+
+        .nav-link:hover {
+            background: var(--light-blue);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-link.main-dashboard {
+            background: var(--primary-blue);
+            color: var(--text-white);
+        }
+
+        .nav-link.main-dashboard:hover {
+            background: var(--primary-blue-dark);
+        }
+
+        .other-games {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        .nav-label {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+
+        /* Mobile First Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: var(--spacing-md);
+                gap: var(--spacing-md);
+            }
+
+            .line-movement-content {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+
+            .page-title {
+                font-size: var(--font-size-3xl);
+            }
+
+            .header {
+                padding: 0 var(--spacing-md);
+            }
+
+            .nav-tabs {
+                flex-wrap: wrap;
+                gap: var(--spacing-xs);
+            }
+
+            .nav-tab {
+                padding: var(--spacing-xs) var(--spacing-sm);
+                font-size: var(--font-size-sm);
+            }
+
+            .sidebar {
+                order: -1;
+            }
+
+            .main-content {
+                padding: var(--spacing-md);
+            }
+
+            .pitcher-table,
+            .projection-table {
+                font-size: var(--font-size-xs);
+            }
+
+            .pitcher-table th,
+            .pitcher-table td,
+            .projection-table th,
+            .projection-table td {
+                padding: var(--spacing-xs) var(--spacing-sm);
+            }
+
+            .values-container {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-sm);
+            }
+
+            .vs-separator {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: var(--font-size-2xl);
+            }
+
+            .logo-icon img {
+                width: 100px;
+            }
+
+            .nav-tabs {
+                display: none;
+            }
+
+            .header {
+                justify-content: space-between;
+            }
+
+            .ai-analysis,
+            .win-probability,
+            .line-movement {
+                padding: var(--spacing-md);
+            }
+
+            .other-games {
+                flex-direction: column;
+                gap: var(--spacing-xs);
+            }
+        }
+
+        /* Tablet Responsive */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .main-container {
+                grid-template-columns: 1fr 280px;
+                gap: var(--spacing-lg);
+            }
+        }
+
+        /* Large Desktop */
+        @media (min-width: 1400px) {
+            .main-container {
+                max-width: 1600px;
+                grid-template-columns: 1fr 360px;
+            }
+        }
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background: #0f172a;
+                --background-alt: #1e293b;
+                --white: #1e293b;
+                --text-primary: #f1f5f9;
+                --text-secondary: #cbd5e1;
+                --text-tertiary: #94a3b8;
+                --border-primary: #334155;
+                --border-secondary: #475569;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Bar Chart Styles */
+        .insights-chart {
+            margin: var(--spacing-xl) 0;
+            padding: var(--spacing-lg);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-primary);
+        }
+
+        .chart-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+        }
+
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .chart-bar {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-sm);
+            border-radius: var(--radius-md);
+            background: var(--gray-50);
+            transition: var(--transition-normal);
+        }
+
+        .chart-bar:hover {
+            background: var(--gray-100);
+            transform: translateX(2px);
+        }
+
+        .chart-label {
+            min-width: 120px;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .chart-bar-fill {
+            height: 20px;
+            border-radius: var(--radius-sm);
+            position: relative;
+            flex: 1;
+            background: var(--gray-200);
+            overflow: hidden;
+        }
+
+        .chart-bar-fill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            border-radius: var(--radius-sm);
+            transition: var(--transition-normal);
+        }
+
+        .chart-bar-fill .team-name {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            color: var(--text-white);
+            z-index: 1;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .chart-bar-fill.high::before {
+            width: 85%;
+            background: linear-gradient(90deg, var(--success-green), #16a34a);
+        }
+
+        .chart-bar-fill.medium::before {
+            width: 60%;
+            background: linear-gradient(90deg, var(--warning-yellow), #d97706);
+        }
+
+        .chart-bar-fill.low::before {
+            width: 35%;
+            background: linear-gradient(90deg, var(--error-red), #dc2626);
+        }
+
+        .chart-bar-fill.percentage-75::before {
+            width: 75%;
+            background: linear-gradient(90deg, var(--success-green), #16a34a);
+        }
+
+        .chart-bar-fill.percentage-90::before {
+            width: 90%;
+            background: linear-gradient(90deg, var(--success-green), #16a34a);
+        }
+
+        .chart-bar-fill.percentage-45::before {
+            width: 45%;
+            background: linear-gradient(90deg, var(--error-red), #dc2626);
+        }
+
+        .chart-bar-fill.percentage-40::before {
+            width: 40%;
+            background: linear-gradient(90deg, var(--error-red), #dc2626);
+        }
+
+        .chart-bar-fill.percentage-65::before {
+            width: 65%;
+            background: linear-gradient(90deg, var(--warning-yellow), #d97706);
+        }
+
+        .chart-bar-fill.percentage-55::before {
+            width: 55%;
+            background: linear-gradient(90deg, var(--warning-yellow), #d97706);
+        }
+
+        /* Team Logo Styles */
+        .page-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .team-logo-left,
+        .team-logo-right {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            transition: var(--transition-normal);
+        }
+
+        .team-logo-left:hover,
+        .team-logo-right:hover {
+            transform: scale(1.1);
+        }
+
+        /* Edge Logo Styles */
+        .edge-logo {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            margin-left: var(--spacing-xs);
+            transition: var(--transition-normal);
+        }
+
+        .edge-logo:hover {
+            transform: scale(1.2);
+        }
+
+        /* Comparison Card Team Logo Styles */
+        .team-logo-comparison-left {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+            margin-right: var(--spacing-xs);
+            transition: var(--transition-normal);
+        }
+
+        .team-logo-comparison-right {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+            margin-left: var(--spacing-xs);
+            transition: var(--transition-normal);
+        }
+
+        .team-logo-comparison-left:hover,
+        .team-logo-comparison-right:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .team-logo-left,
+            .team-logo-right {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .page-title {
+                gap: var(--spacing-sm);
+                font-size: var(--font-size-xl);
+            }
+        }
+
+        .chart-value {
+            min-width: 60px;
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: right;
+        }
+
+        .chart-value.high {
+            color: var(--success-green);
+        }
+
+        .chart-value.medium {
+            color: var(--warning-yellow);
+        }
+
+        .chart-value.low {
+            color: var(--error-red);
+        }
+
+        @media (max-width: 768px) {
+            .chart-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--spacing-sm);
+            }
+
+            .chart-label {
+                min-width: auto;
+                width: 100%;
+            }
+
+            .chart-bar-fill {
+                width: 100%;
+            }
+        }
+
+        /* Pitching Details Section */
+        .pitching-details {
+            margin-top: var(--spacing-lg);
+        }
+
+        .pitching-details-container {
+            display: flex;
+            gap: var(--spacing-xl);
+            justify-content: space-between;
+        }
+
+        .starting-pitchers-section {
+            flex: 1;
+            background: var(--white);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+        }
+
+        .starting-pitchers-section:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-blue-light);
+        }
+
+        .bullpen-section {
+            flex: 1;
+            background: var(--white);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+        }
+
+        .bullpen-section:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-blue-light);
+        }
+
+        .starting-pitchers-section h3.pitching-title,
+        .bullpen-section h3.pitching-title {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .starting-pitchers-section .pitcher-icon,
+        .bullpen-section .pitcher-icon {
+            width: 30px;
+            height: 20px;
+            background-image: url('pitcher.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.4;
+        }
+
+        .pitching-details-container .pitcher-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: var(--font-size-sm);
+        }
+
+        .pitching-details-container .pitcher-table th,
+        .pitching-details-container .pitcher-table td {
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-align: left;
+            border-bottom: 1px solid var(--border-primary);
+            transition: var(--transition-fast);
+        }
+
+        .pitching-details-container .pitcher-table th {
+            background-color: var(--background-alt);
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: var(--font-size-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pitching-details-container .pitcher-table td {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .pitching-details-container .pitcher-table tr:hover {
+            background-color: var(--background-alt);
+            transform: scale(1.01);
+        }
+
+        .pitching-details-container .pitcher-table td strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .bullpen-section .bullpen-stats {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .bullpen-section .bullpen-team {
+            padding: var(--spacing-md);
+            background: var(--background-alt);
+            border-radius: var(--radius-md);
+            transition: var(--transition-fast);
+        }
+
+        .bullpen-section .bullpen-team:hover {
+            background: var(--gray-100);
+        }
+
+        .bullpen-section .team-name-header {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-size-sm);
+        }
+
+        .bullpen-section .bullpen-metrics {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        /* Responsive design for pitching details */
+        @media (max-width: 768px) {
+            .pitching-details-container {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+
+            .starting-pitchers-section,
+            .bullpen-section {
+                padding: var(--spacing-md);
+            }
+
+            .pitching-details-container .pitcher-table th,
+            .pitching-details-container .pitcher-table td {
+                padding: var(--spacing-xs) var(--spacing-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="https://beastsportspicks.com/" target="_blank" class="logo-icon">
+                <img src="logo.png" alt="The Sharp Edge" />
+            </a>
+        </div>
+        <nav class="nav-tabs">
+            <a href="#" class="nav-tab">Games</a>
+            <a href="index.html" class="nav-tab active">Dashboard</a>
+            <a href="#" class="nav-tab">Sharp Plays</a>
+        </nav>
+        <div class="header-right">
+        </div>
+    </header>
+
+    <div class="main-container">
+        <main class="main-content">
+            <h1 class="page-title">
+                <img src="team_logos/Houston_Astros.png" alt="Houston Astros" class="team-logo-left">
+                Houston Astros at Arizona Diamondbacks
+                <img src="team_logos/Arizona_Diamondbacks.png" alt="Arizona Diamondbacks" class="team-logo-right">
+            </h1>
+            <p class="page-subtitle">HOU vs ARI Analysis • Monday, July 21, 2025 • 9:40 PM ET</p>
+            
+            <div class="line-movement">
+                <div class="line-movement-header">
+                    <h3>Line Movement</h3>
+                </div>
+                <div class="line-movement-content">
+                    <div class="line-movement-section">
+                        <h4>Opening vs Current Lines</h4>
+                        <div class="line-data">
+                            <div class="line-item">
+                                <span class="line-label">Opening:</span>
+                                <span class="line-value">ARI -1.5</span>
+                            </div>
+                            <div class="line-item">
+                                <span class="line-label">Current:</span>
+                                <span class="line-value">ARI -1.5</span>
+                            </div>
+                            <div class="line-item">
+                                <span class="line-label">Total:</span>
+                                <span class="line-value">O/U 9.5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-movement-section">
+                        <h4>Betting Action</h4>
+                        <div class="betting-action">
+                            <div class="betting-visual">
+                                <div class="betting-header">
+                                    <span class="betting-type">Bets</span>
+                                </div>
+                                <div class="betting-team-row">
+                                    <span class="betting-team-name">HOU</span>
+                                    <div class="betting-bar-container">
+                                        <div class="betting-bar-fill" style="width: 45%;">45%</div>
+                                    </div>
+                                </div>
+                                <div class="betting-team-row">
+                                    <span class="betting-team-name">ARI</span>
+                                    <div class="betting-bar-container">
+                                        <div class="betting-bar-fill advantage" style="width: 55%;">55%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="betting-visual">
+                                <div class="betting-header">
+                                    <span class="betting-type">Money</span>
+                                </div>
+                                <div class="betting-team-row">
+                                    <span class="betting-team-name">HOU</span>
+                                    <div class="betting-bar-container">
+                                        <div class="betting-bar-fill" style="width: 38%;">38%</div>
+                                    </div>
+                                </div>
+                                <div class="betting-team-row">
+                                    <span class="betting-team-name">ARI</span>
+                                    <div class="betting-bar-container">
+                                        <div class="betting-bar-fill advantage" style="width: 62%;">62%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="win-probability">
+                <div class="win-probability-header win-probability-layout">
+                    <div class="analysis-title-row">
+                        <h3>Win Probability</h3>
+                        <div class="projections-icon-main"></div>
+                    </div>
+                    <div class="category-edge">
+                        <span class="edge-label">EDGE:</span>
+                        <span class="edge-team">ARI<img src="team_logos/Arizona_Diamondbacks.png" alt="ARI" class="edge-logo"></span>
+                    </div>
+                </div>
+                <div class="win-probability-content">
+                    <table class="projection-table">
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>HOU</th>
+                                <th>ARI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sharp Edge Model</td>
+                                <td>55.0%</td>
+                                <td><strong>45.0%</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Market Consensus</td>
+                                <td>55.0%</td>
+                                <td><strong>45.0%</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Edge Differential</td>
+                                <td colspan="2" style="text-align: center;"><strong>+2.5% ARI</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="ai-analysis">
+                <div class="analysis-header batting-layout">
+                    <div class="analysis-title-row">
+                        <h2 class="analysis-title">Batting Analysis</h2>
+                        <div class="ai-badge batting-icon">BATTING</div>
+                    </div>
+                    <div class="category-edge">
+                        <span class="edge-label">EDGE:</span>
+                        <span class="edge-team">ARI<img src="team_logos/Arizona_Diamondbacks.png" alt="ARI" class="edge-logo"></span>
+                    </div>
+                </div>
+                
+                <div class="comparison-card batting">
+                    <div class="card-header">
+                        <div class="timeframe-labels">
+                            <span class="timeframe-primary">Last 7 Days</span>
+                            <span class="timeframe-secondary">Season</span>
+                        </div>
+                        <div class="team-headers">
+                            <span class="team-header away-header"><img src="team_logos/Houston_Astros.png" alt="HOU" class="team-logo-comparison-left">HOU</span>
+                            <span class="vs-separator">vs</span>
+                            <span class="team-header home-header">ARI<img src="team_logos/Arizona_Diamondbacks.png" alt="ARI" class="team-logo-comparison-right"></span>
+                        </div>
+                    </div>
+                    <div class="comparison-content">
+                        <div class="comparison-row">
+                            <div class="metric-label">Batting Average</div>
+                            <div class="values-container">
+                                <div class="team-value away-value">
+                                    <div class="value-primary">0.365</div>
+                                    <div class="value-secondary">0.411</div>
+                                </div>
+                                <div class="vs-separator">vs</div>
+                                <div class="team-value home-value">
+                                    <div class="value-primary advantage">0.436</div>
+                                    <div class="value-secondary">0.252</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="metric-label">Runs Scored per Game</div>
+                            <div class="values-container">
+                                <div class="team-value away-value">
+                                    <div class="value-primary">5.3</div>
+                                    <div class="value-secondary">4.7</div>
+                                </div>
+                                <div class="vs-separator">vs</div>
+                                <div class="team-value home-value">
+                                    <div class="value-primary advantage">2.3</div>
+                                    <div class="value-secondary">5.2</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="metric-label">OPS</div>
+                            <div class="values-container">
+                                <div class="team-value away-value">
+                                    <div class="value-primary">0.832</div>
+                                    <div class="value-secondary">0.886</div>
+                                </div>
+                                <div class="vs-separator">vs</div>
+                                <div class="team-value home-value">
+                                    <div class="value-primary advantage">0.928</div>
+                                    <div class="value-secondary">0.776</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-analysis">
+                <div class="analysis-header pitching-layout">
+                    <div class="analysis-title-row">
+                        <h2 class="analysis-title">Pitching Analysis</h2>
+                        <div class="ai-badge pitching-icon">PITCHING</div>
+                    </div>
+                    <div class="category-edge">
+                        <span class="edge-label">EDGE:</span>
+                        <span class="edge-team">HOU<img src="team_logos/Houston_Astros.png" alt="HOU" class="edge-logo"></span>
+                    </div>
+                </div>
+                
+                <div class="comparison-card pitching">
+                    <div class="card-header">
+                        <div class="timeframe-labels">
+                            <span class="timeframe-primary">Last 7 Days</span>
+                            <span class="timeframe-secondary">Season</span>
+                        </div>
+                        <div class="team-headers">
+                            <span class="team-header away-header"><img src="team_logos/Houston_Astros.png" alt="HOU" class="team-logo-comparison-left">HOU</span>
+                            <span class="vs-separator">vs</span>
+                            <span class="team-header home-header">ARI<img src="team_logos/Arizona_Diamondbacks.png" alt="ARI" class="team-logo-comparison-right"></span>
+                        </div>
+                    </div>
+                    <div class="comparison-content">
+                        <div class="comparison-row">
+                            <div class="metric-label">ERA</div>
+                            <div class="values-container">
+                                <div class="team-value away-value">
+                                    <div class="value-primary advantage">5.33</div>
+                                    <div class="value-secondary">4.65</div>
+                                </div>
+                                <div class="vs-separator">vs</div>
+                                <div class="team-value home-value">
+                                    <div class="value-primary">2.33</div>
+                                    <div class="value-secondary">4.12</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="metric-label">WHIP</div>
+                            <div class="values-container">
+                                <div class="team-value away-value">
+                                    <div class="value-primary advantage">1.48</div>
+                                    <div class="value-secondary">1.34</div>
+                                </div>
+                                <div class="vs-separator">vs</div>
+                                <div class="team-value home-value">
+                                    <div class="value-primary">1.37</div>
+                                    <div class="value-secondary">1.27</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="metric-label">Opponent Batting Average</div>
+                            <div class="values-container">
+                                <div class="team-value away-value">
+                                    <div class="value-primary">.238</div>
+                                    <div class="value-secondary">.251</div>
+                                </div>
+                                <div class="vs-separator">vs</div>
+                                <div class="team-value home-value">
+                                    <div class="value-primary advantage">0.411</div>
+                                    <div class="value-secondary">0.365</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="metric-label">Strikeouts per Game</div>
+                            <div class="values-container">
+                                <div class="team-value away-value">
+                                    <div class="value-primary advantage">8.2</div>
+                                    <div class="value-secondary">7.8</div>
+                                </div>
+                                <div class="vs-separator">vs</div>
+                                <div class="team-value home-value">
+                                    <div class="value-primary">7.1</div>
+                                    <div class="value-secondary">7.5</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pitching Details Section -->
+                <div class="pitching-details">
+                    <div class="pitching-details-container">
+                        <div class="starting-pitchers-section">
+                            <h3 class="pitching-title">Starting Pitchers<div class="pitcher-icon"></div></h3>
+                            <div class="starting-pitchers-table">
+                                <table class="pitcher-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Team</th>
+                                            <th>Pitcher</th>
+                                            <th>ERA</th>
+                                            <th>Record</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>HOU</strong></td>
+                                            <td><strong>Colton Gordon (L)</strong></td>
+                                            <td><strong>4.67</strong></td>
+                                            <td><strong>3-2</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ARI</td>
+                                            <td>Zac Gallen (R)</td>
+                                            <td>5.40</td>
+                                            <td>7-10</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="bullpen-section">
+                            <h3 class="pitching-title">Bullpen Analysis<div class="pitcher-icon"></div></h3>
+                            <div class="bullpen-stats">
+                                <div class="bullpen-team">
+                                    <div class="team-name-header">HOU Bullpen:</div>
+                                    <div class="bullpen-metrics">ERA 3.31, WHIP 1.12</div>
+                                </div>
+                                <div class="bullpen-team">
+                                    <div class="team-name-header">ARI Bullpen:</div>
+                                    <div class="bullpen-metrics">ERA 4.93, WHIP 1.37</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-analysis">
+                <div class="analysis-header records-layout">
+                    <div class="analysis-title-row">
+                        <h2 class="analysis-title">Team Records</h2>
+                        <div class="ai-badge records-icon">RECORDS</div>
+                    </div>
+                    <div class="category-edge">
+                        <span class="edge-label">EDGE:</span>
+                        <span class="edge-team">HOU<img src="team_logos/Houston_Astros.png" alt="HOU" class="edge-logo"></span>
+                    </div>
+                </div>
+                
+                <div class="comparison-card records">
+                    <div class="card-header">
+                        <div class="timeframe-labels">
+                            <span class="timeframe-primary">Last 10 Games</span>
+                            <span class="timeframe-secondary">Season</span>
+                        </div>
+                        <div class="team-headers">
+                            <span class="team-header away-header"><img src="team_logos/Houston_Astros.png" alt="HOU" class="team-logo-comparison-left">HOU</span>
+                            <span class="vs-separator">vs</span>
+                            <span class="team-header home-header">ARI<img src="team_logos/Arizona_Diamondbacks.png" alt="ARI" class="team-logo-comparison-right"></span>
+                        </div>
+                    </div>
+                    <div class="comparison-content">
+                        <div class="comparison-row">
+                            <div class="metric-label">Win Percentage</div>
+                            <div class="values-container">
+                                <div class="team-value away-value">
+                                    <div class="value-primary advantage">0.533</div>
+                                    <div class="value-secondary">0.511</div>
+                                </div>
+                                <div class="vs-separator">vs</div>
+                                <div class="team-value home-value">
+                                    <div class="value-primary">0.500</div>
+                                    <div class="value-secondary">0.500</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="metric-label">Home/Away Record</div>
+                            <div class="values-container">
+                                <div class="team-value away-value">
+                                    <div class="value-primary advantage">5-5</div>
+                                    <div class="value-secondary">82-80</div>
+                                </div>
+                                <div class="vs-separator">vs</div>
+                                <div class="team-value home-value">
+                                    <div class="value-primary">5-5</div>
+                                    <div class="value-secondary">27-30</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="metric-label">vs Division</div>
+                            <div class="values-container">
+                                <div class="team-value away-value">
+                                    <div class="value-primary advantage">2-1</div>
+                                    <div class="value-secondary">18-15</div>
+                                </div>
+                                <div class="vs-separator">vs</div>
+                                <div class="team-value home-value">
+                                    <div class="value-primary">1-2</div>
+                                    <div class="value-secondary">15-18</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="metric-label">Run Differential</div>
+                            <div class="values-container">
+                                <div class="team-value away-value">
+                                    <div class="value-primary advantage">+8</div>
+                                    <div class="value-secondary">+45</div>
+                                </div>
+                                <div class="vs-separator">vs</div>
+                                <div class="team-value home-value">
+                                    <div class="value-primary">-3</div>
+                                    <div class="value-secondary">-18</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-analysis">
+                <div class="analysis-header">
+                    <h2 class="analysis-title">All Insights</h2>
+                    <div class="ai-badge">INSIGHTS</div>
+                </div>
+                
+                <div class="insights-chart">
+                    <div class="chart-title">Confidence Level Distribution</div>
+                    <div class="chart-container">
+                        <!-- HIGH CONFIDENCE -->
+                        <div class="chart-bar">
+                            <div class="chart-label">Weather Conditions</div>
+                            <div class="chart-bar-fill percentage-90"><span class="team-name">OVER</span></div>
+                            <div class="chart-value high">90%</div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="chart-label">Pitcher Matchup</div>
+                            <div class="chart-bar-fill percentage-75"><span class="team-name">HOU</span></div>
+                            <div class="chart-value high">75%</div>
+                        </div>
+                        
+                        <!-- MEDIUM CONFIDENCE -->
+                        <div class="chart-bar">
+                            <div class="chart-label">Over/Under Trend</div>
+                            <div class="chart-bar-fill percentage-65"><span class="team-name">OVER</span></div>
+                            <div class="chart-value medium">65%</div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="chart-label">Recent Performance</div>
+                            <div class="chart-bar-fill medium"><span class="team-name">HOU</span></div>
+                            <div class="chart-value medium">60%</div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="chart-label">Run Line Analysis</div>
+                            <div class="chart-bar-fill medium"><span class="team-name">HOU</span></div>
+                            <div class="chart-value medium">60%</div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="chart-label">Betting Pattern</div>
+                            <div class="chart-bar-fill percentage-55"><span class="team-name">HOU</span></div>
+                            <div class="chart-value medium">55%</div>
+                        </div>
+                        
+                        <!-- LOW CONFIDENCE -->
+                        <div class="chart-bar">
+                            <div class="chart-label">Bullpen Advantage</div>
+                            <div class="chart-bar-fill percentage-45"><span class="team-name">HOU</span></div>
+                            <div class="chart-value low">45%</div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="chart-label">Home Field Impact</div>
+                            <div class="chart-bar-fill percentage-40"><span class="team-name">ARI</span></div>
+                            <div class="chart-value low">40%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="insights-table">
+                    <table class="projection-table">
+                        <thead>
+                            <tr>
+                                <th>Analysis Type</th>
+                                <th>Insight</th>
+                                <th>Data Source</th>
+                                <th>Confidence</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- HIGH CONFIDENCE -->
+                            <tr>
+                                <td><strong>Weather Conditions</strong></td>
+                                <td>Clear skies, 75°F, light wind - favorable for offense</td>
+                                <td>Weather Data</td>
+                                <td><span class="confidence-indicator confidence-high"></span>High</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pitcher Matchup</strong></td>
+                                <td>HOU starting pitcher has better ERA and consistency</td>
+                                <td>Season Stats</td>
+                                <td><span class="confidence-indicator confidence-high"></span>High</td>
+                            </tr>
+                            
+                            <!-- MEDIUM CONFIDENCE -->
+                            <tr>
+                                <td><strong>Over/Under Trend</strong></td>
+                                <td>High scoring potential: HOU 5.3 + ARI 5.4 = 9.6 avg runs</td>
+                                <td>Offensive Stats</td>
+                                <td><span class="confidence-indicator confidence-medium"></span>Medium</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Recent Performance</strong></td>
+                                <td>HOU has won 6 of last 10 games with strong offensive output</td>
+                                <td>L10 Games</td>
+                                <td><span class="confidence-indicator confidence-medium"></span>Medium</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Run Line Analysis</strong></td>
+                                <td>HOU covers run line 60% in last 10, ARI struggles at -1.5</td>
+                                <td>L10 Covers</td>
+                                <td><span class="confidence-indicator confidence-medium"></span>Medium</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Betting Pattern</strong></td>
+                                <td>Sharp money favoring HOU despite public backing ARI</td>
+                                <td>Betting Action</td>
+                                <td><span class="confidence-indicator confidence-medium"></span>Medium</td>
+                            </tr>
+                            
+                            <!-- LOW CONFIDENCE -->
+                            <tr>
+                                <td><strong>Bullpen Advantage</strong></td>
+                                <td>HOU bullpen well-rested, ARI bullpen used heavily in last 3</td>
+                                <td>Usage Stats</td>
+                                <td><span class="confidence-indicator confidence-low"></span>Low</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Home Field Impact</strong></td>
+                                <td>ARI playing at home but HOU performs well on road</td>
+                                <td>Home/Away</td>
+                                <td><span class="confidence-indicator confidence-low"></span>Low</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="game-navigation">
+                <div class="main-dashboard-centered">
+                    <a href="index.html" class="nav-link main-dashboard">← Main Dashboard</a>
+                </div>
+                <div class="other-games">
+                    <span class="nav-label">Other Games:</span>
+                    <a href="game_1_sdp_mia_2025-07-21.html" class="nav-link">SDP vs MIA</a>
+                    <a href="game_2_bal_cle_2025-07-21.html" class="nav-link">BAL vs CLE</a>
+                    <a href="game_3_det_pit_2025-07-21.html" class="nav-link">DET vs PIT</a>
+                    <a href="game_4_cin_wsn_2025-07-21.html" class="nav-link">CIN vs WSN</a>
+                    <a href="game_5_bos_phi_2025-07-21.html" class="nav-link">BOS vs PHI</a>
+                    <a href="game_6_nyy_tor_2025-07-21.html" class="nav-link">NYY vs TOR</a>
+                    <a href="game_7_laa_nym_2025-07-21.html" class="nav-link">LAA vs NYM</a>
+                    <a href="game_8_sfg_atl_2025-07-21.html" class="nav-link">SFG vs ATL</a>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <h3>Projections</h3>
+                <div class="projections-table">
+                    <table class="projection-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>HOU</th>
+                                <th>ARI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Win Probability</td>
+                                <td>55.0%</td>
+                                <td><strong>45.0%</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Projected Score</td>
+                                <td>4.1</td>
+                                <td><strong>5.4</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Total Runs</td>
+                                <td colspan="2" style="text-align: center;"><strong>9.5</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="sidebar-card">
+                <h3>9th Inning & Hits Markets</h3>
+                <div class="hits-markets-table">
+                    <table class="projection-table">
+                        <thead>
+                            <tr>
+                                <th>Market</th>
+                                <th>HOU</th>
+                                <th>ARI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>9th Inning Score</td>
+                                <td>Yes: +190</td>
+                                <td>Yes: +210</td>
+                            </tr>
+                            <tr>
+                                <td>Total Hits O/U</td>
+                                <td colspan="2" style="text-align: center;">17.5 (-110)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="sidebar-card">
+                <h3>Edge Breakdown</h3>
+                <div style="margin-bottom: 8px;">
+                    <span class="confidence-indicator confidence-high"></span>
+                    Batting: HOU 2 - 4 ARI
+                </div>
+                <div style="margin-bottom: 8px;">
+                    <span class="confidence-indicator confidence-medium"></span>
+                    Pitching: HOU 4 - 2 ARI
+                </div>
+                <div>
+                    <span class="confidence-indicator confidence-low"></span>
+                    Records: HOU 3 - 3 ARI
+                </div>
+            </div>
+        </aside>
+    </div>
+
+        <style>
+        .game-navigation-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px 24px;
+            margin: 32px 0 24px 0;
+            gap: 16px;
+        }
+        
+        .game-navigation-bottom .nav-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            border: 1px solid var(--primary-blue);
+        }
+        
+        .game-navigation-bottom .nav-link:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+        
+        .game-navigation-bottom .nav-link.disabled {
+            color: var(--gray-400);
+            border-color: var(--gray-300);
+            cursor: not-allowed;
+        }
+        
+        .game-navigation-bottom .nav-link.disabled:hover {
+            background: transparent;
+            color: var(--gray-400);
+        }
+        
+        .game-navigation-bottom .nav-link.games-list {
+            background: var(--primary-blue);
+            color: white;
+        }
+        
+        .game-navigation-bottom .nav-link.games-list:hover {
+            background: #1d4ed8;
+        }
+        
+        @media (max-width: 768px) {
+            .game-navigation-bottom {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+        </style>
+    
+<div class="game-navigation-bottom">
+    <a href="game_12_stl_col_2025-07-21.html" class="nav-link prev-game">← Previous Game</a>
+    <a href="games.html" class="nav-link games-list">All Games</a>
+    <a href="game_14_mil_sea_2025-07-21.html" class="nav-link next-game">Next Game →</a>
+</div>
+</body>
+</html>
