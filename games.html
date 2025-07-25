@@ -7,378 +7,323 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-blue: #1e40af;
-            --light-blue: #dbeafe;
-            --background: #f8fafc;
-            --white: #ffffff;
-            --gray-text: #64748b;
-            --dark-text: #1e293b;
-            --success-green: #22c55e;
-            --warning-yellow: #fbbf24;
-            --error-red: #ef4444;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background);
-            color: var(--dark-text);
-            line-height: 1.5;
-        }
-
-        .header {
-            background: var(--white);
-            height: 64px;
-            border-bottom: 1px solid #e2e8f0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 24px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-icon {
-            width: 120px;
-            height: 60px;
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-        
-        .logo-icon:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .nav-tabs {
-            display: flex;
-            gap: 8px;
-        }
-
-        .nav-tab {
-            padding: 8px 16px;
-            border-radius: 6px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            color: var(--gray-text);
-        }
-
-        .nav-tab.active {
-            background: var(--primary-blue);
-            color: white;
-        }
-
-        .nav-tab:hover {
-            background: var(--light-blue);
-        }
-
-        .nav-tab.active:hover {
-            background: #1d4ed8;
-        }
-
-        .main-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 24px;
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .page-title {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--dark-text);
-        }
-
-        .page-subtitle {
-            color: var(--gray-text);
-            font-size: 16px;
-        }
-
-        .games-table-container {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 0;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            margin-bottom: 24px;
-        }
-
-        .games-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .games-table th {
-            background: var(--background);
-            padding: 16px;
-            text-align: left;
-            font-weight: 600;
-            color: var(--dark-text);
-            border-bottom: 2px solid #e2e8f0;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .games-table td {
-            padding: 16px;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 14px;
-        }
-
-        .game-row {
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .game-row:hover {
-            background: var(--light-blue);
-        }
-
-        .time-cell {
-            font-weight: 600;
-            color: var(--primary-blue);
-            min-width: 80px;
-        }
-
-        .matchup-cell {
-            min-width: 200px;
-        }
-
-        .teams-display {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .away-team {
-            font-weight: 600;
-            color: var(--dark-text);
-        }
-
-        .vs-divider {
-            color: var(--gray-text);
-            font-size: 12px;
-        }
-
-        .home-team {
-            font-weight: 600;
-            color: var(--dark-text);
-        }
-
-        .spread-cell, .total-cell {
-            font-weight: 500;
-            color: var(--gray-text);
-            min-width: 100px;
-        }
-
-        .metrics-cell {
-            font-weight: 600;
-            color: var(--primary-blue);
-            min-width: 100px;
-        }
-
-        .action-cell {
-            min-width: 120px;
-        }
-
-        .view-btn {
-            background: var(--primary-blue);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 6px;
-            text-align: center;
-            font-weight: 500;
-            font-size: 12px;
-            transition: all 0.2s ease;
-        }
-
-        .view-btn:hover {
-            background: #1d4ed8;
-        }
-
-        .last-updated {
-            text-align: center;
-            color: var(--gray-text);
-            font-size: 14px;
-            margin-top: 24px;
-        }
-
-        @media (max-width: 768px) {
-            .games-table-container {
-                overflow-x: auto;
-            }
-            
-            .games-table {
-                min-width: 600px;
-            }
-            
-            .games-table th,
-            .games-table td {
-                padding: 12px 8px;
-            }
-            
-            .matchup-cell {
-                min-width: 150px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles/game-dashboard.css">
 </head>
 <body>
     <header class="header">
         <div class="logo">
-            <a href="https://beastsportspicks.com/" target="_blank" class="logo-icon"><img src="logo.png" alt="The Sharp Edge" /></a>
+            <a href="https://beastsportspicks.com/" target="_blank" class="logo-icon">
+                <img src="logo.png" alt="The Sharp Edge" />
+            </a>
         </div>
         
-        <div class="nav-tabs">
-            <a href="games.html" class="nav-tab active">Games</a>
-            <a href="index.html" class="nav-tab">Dashboard</a>
-            <a href="sharp_plays.html" class="nav-tab">Sharp Plays</a>
+        <nav class="nav-tabs" role="navigation" aria-label="Main navigation">
+            <a href="games.html" class="nav-tab active" aria-current="page" aria-label="Games page (currently selected)">Games</a>
+            <a href="index.html" class="nav-tab" aria-label="Navigate to Dashboard page">Dashboard</a>
+            <a href="sharp_plays.html" class="nav-tab" aria-label="Navigate to Sharp Plays page">Sharp Plays</a>
+        </nav>
+        
+        <div class="header-right">
+            <div class="avatar">AI</div>
         </div>
     </header>
 
     <div class="main-container">
-        <div class="page-header">
-            <h1 class="page-title">Today's Games</h1>
-            <p class="page-subtitle">Click any game for detailed analytics and betting insights</p>
+        <main class="main-content">
+            <div class="page-title">
+                <h1>Today&apos;s Games</h1>
+                <p class="page-subtitle">Select a game to view detailed analysis</p>
+            </div>
+            
+            <div class="games-grid" role="main" aria-label="Games list">
+                
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/MIA.png" alt="MIA" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">MIA</div>
+                    </div>
+                </div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/MIL.png" alt="MIL" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">MIL</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-time">4:10 PM ET</div>
+            <a href="game_1_mia_mil_2025-07-25_1610.html" class="analyze-btn">Analyze Game</a>
         </div>
-
-        <div class="games-table-container">
-            <table class="games-table">
-                <thead>
-                    <tr>
-                        <th>Time</th>
-                        <th>Matchup</th>
-                        <th>Spread</th>
-                        <th>Total</th>
-                        <th>Metrics</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-            <tr class="game-row" onclick="window.location.href='game_1_bal_cle_2025-07-24_1310.html'">
-                <td class="time-cell">1:10 PM ET</td>
-                <td class="matchup-cell">
-                    <div class="teams-display">
-                        <span class="away-team">BAL</span>
-                        <span class="vs-divider">@</span>
-                        <span class="home-team">CLE</span>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/ARI.png" alt="ARI" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">ARI</div>
                     </div>
-                </td>
-                <td class="spread-cell">--</td>
-                <td class="total-cell">--</td>
-                <td class="metrics-cell">13</td>
-                <td class="action-cell">
-                    <div class="view-btn">View Analysis</div>
-                </td>
-            </tr>
-            <tr class="game-row" onclick="window.location.href='game_2_tor_det_2025-07-24.html'">
-                <td class="time-cell">08:52 AM ET</td>
-                <td class="matchup-cell">
-                    <div class="teams-display">
-                        <span class="away-team">TOR</span>
-                        <span class="vs-divider">@</span>
-                        <span class="home-team">DET</span>
+                </div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/PIT.png" alt="PIT" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">PIT</div>
                     </div>
-                </td>
-                <td class="spread-cell">--</td>
-                <td class="total-cell">--</td>
-                <td class="metrics-cell">13</td>
-                <td class="action-cell">
-                    <div class="view-btn">View Analysis</div>
-                </td>
-            </tr>
-            <tr class="game-row" onclick="window.location.href='game_3_sdp_stl_2025-07-24_1945.html'">
-                <td class="time-cell">7:45 PM ET</td>
-                <td class="matchup-cell">
-                    <div class="teams-display">
-                        <span class="away-team">SDP</span>
-                        <span class="vs-divider">@</span>
-                        <span class="home-team">STL</span>
-                    </div>
-                </td>
-                <td class="spread-cell">--</td>
-                <td class="total-cell">--</td>
-                <td class="metrics-cell">13</td>
-                <td class="action-cell">
-                    <div class="view-btn">View Analysis</div>
-                </td>
-            </tr>
-            <tr class="game-row" onclick="window.location.href='game_4_oak_hou_2025-07-24.html'">
-                <td class="time-cell">08:52 AM ET</td>
-                <td class="matchup-cell">
-                    <div class="teams-display">
-                        <span class="away-team">OAK</span>
-                        <span class="vs-divider">@</span>
-                        <span class="home-team">HOU</span>
-                    </div>
-                </td>
-                <td class="spread-cell">--</td>
-                <td class="total-cell">--</td>
-                <td class="metrics-cell">13</td>
-                <td class="action-cell">
-                    <div class="view-btn">View Analysis</div>
-                </td>
-            </tr>
-            <tr class="game-row" onclick="window.location.href='game_5_sea_laa_2025-07-24.html'">
-                <td class="time-cell">08:52 AM ET</td>
-                <td class="matchup-cell">
-                    <div class="teams-display">
-                        <span class="away-team">SEA</span>
-                        <span class="vs-divider">@</span>
-                        <span class="home-team">LAA</span>
-                    </div>
-                </td>
-                <td class="spread-cell">--</td>
-                <td class="total-cell">--</td>
-                <td class="metrics-cell">13</td>
-                <td class="action-cell">
-                    <div class="view-btn">View Analysis</div>
-                </td>
-            </tr>
-                </tbody>
-            </table>
+                </div>
+            </div>
+            <div class="game-time">6:40 PM ET</div>
+            <a href="game_2_ari_pit_2025-07-25_1840.html" class="analyze-btn">Analyze Game</a>
         </div>
-
-        <div class="last-updated">
-            Last updated: 08:52 AM
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/COL.png" alt="COL" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">COL</div>
+                    </div>
+                </div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/BAL.png" alt="BAL" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">BAL</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-time">7:05 PM ET</div>
+            <a href="game_3_col_bal_2025-07-25_1905.html" class="analyze-btn">Analyze Game</a>
         </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/PHI.png" alt="PHI" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">PHI</div>
+                    </div>
+                </div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/NYY.png" alt="NYY" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">NYY</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-time">7:05 PM ET</div>
+            <a href="game_4_phi_nyy_2025-07-25_1905.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/TOR.png" alt="TOR" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">TOR</div>
+                    </div>
+                </div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/DET.png" alt="DET" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">DET</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-time">7:10 PM ET</div>
+            <a href="game_5_tor_det_2025-07-25_1910.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/LAD.png" alt="LAD" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">LAD</div>
+                    </div>
+                </div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/BOS.png" alt="BOS" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">BOS</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-time">7:10 PM ET</div>
+            <a href="game_6_lad_bos_2025-07-25_1910.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/TBR.png" alt="TBR" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">TBR</div>
+                    </div>
+                </div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/CIN.png" alt="CIN" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">CIN</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-time">7:10 PM ET</div>
+            <a href="game_7_tbr_cin_2025-07-25_1910.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/SDP.png" alt="SDP" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">SDP</div>
+                    </div>
+                </div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/STL.png" alt="STL" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">STL</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-time">7:15 PM ET</div>
+            <a href="game_8_sdp_stl_2025-07-25_1915.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/CHC.png" alt="CHC" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">CHC</div>
+                    </div>
+                </div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/CHW.png" alt="CHW" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">CHW</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-time">7:40 PM ET</div>
+            <a href="game_9_chc_chw_2025-07-25_1940.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/ATL.png" alt="ATL" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">ATL</div>
+                    </div>
+                </div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/TEX.png" alt="TEX" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">TEX</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-time">8:05 PM ET</div>
+            <a href="game_10_atl_tex_2025-07-25_2005.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/OAK.png" alt="OAK" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">OAK</div>
+                    </div>
+                </div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/HOU.png" alt="HOU" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">HOU</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-time">8:10 PM ET</div>
+            <a href="game_11_oak_hou_2025-07-25_2010.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/WSN.png" alt="WSN" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">WSN</div>
+                    </div>
+                </div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/MIN.png" alt="MIN" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">MIN</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-time">8:10 PM ET</div>
+            <a href="game_12_wsn_min_2025-07-25_2010.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/CLE.png" alt="CLE" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">CLE</div>
+                    </div>
+                </div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/KCR.png" alt="KCR" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">KCR</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-time">8:10 PM ET</div>
+            <a href="game_13_cle_kcr_2025-07-25_2010.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/SEA.png" alt="SEA" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">SEA</div>
+                    </div>
+                </div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/LAA.png" alt="LAA" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">LAA</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-time">9:38 PM ET</div>
+            <a href="game_14_sea_laa_2025-07-25_2138.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/NYM.png" alt="NYM" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">NYM</div>
+                    </div>
+                </div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/SFG.png" alt="SFG" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">SFG</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-time">10:15 PM ET</div>
+            <a href="game_15_nym_sfg_2025-07-25_2215.html" class="analyze-btn">Analyze Game</a>
+        </div>
+            </div>
+        </main>
     </div>
 </body>
 </html>
