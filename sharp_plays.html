@@ -18,7 +18,6 @@
         </div>
         
         <nav class="nav-tabs" role="navigation" aria-label="Main navigation">
-            <a href="games.html" class="nav-tab" aria-label="Navigate to Games page">Games</a>
             <a href="index.html" class="nav-tab" aria-label="Navigate to Dashboard page">Dashboard</a>
             <a href="sharp_plays.html" class="nav-tab active" aria-current="page" aria-label="Sharp Plays page (currently selected)">Sharp Plays</a>
         </nav>
@@ -31,43 +30,30 @@
     <div class="main-container">
         <main class="main-content">
             <div class="sharp-plays-container">
-        <div class="plays-header">
-            <h2>Today&apos;s Sharp Plays</h2>
-            <p class="plays-subtitle">AI-identified betting opportunities with high confidence</p>
-        </div>
-        
-        <div class="plays-grid">
-            <div class="play-card high-confidence">
-                <div class="play-header">
-                    <div class="confidence-badge">High Confidence</div>
-                    <div class="play-type">Moneyline</div>
-                </div>
-                <div class="play-details">
-                    <div class="teams">BAL @ CLE</div>
-                    <div class="pick">Cleveland Guardians ML</div>
-                    <div class="odds">+125</div>
-                </div>
-                <div class="play-reasoning">
-                    Strong home pitching advantage with favorable bullpen matchup
-                </div>
+            <div class="plays-header">
+                <h2>Today&apos;s Sharp Plays</h2>
+                <p class="plays-subtitle">No sharp plays available at this time<br><small>Check back later for AI-identified betting opportunities</small></p>
             </div>
             
-            <div class="play-card medium-confidence">
-                <div class="play-header">
-                    <div class="confidence-badge">Medium Confidence</div>
-                    <div class="play-type">Run Line</div>
-                </div>
-                <div class="play-details">
-                    <div class="teams">TOR @ DET</div>
-                    <div class="pick">Detroit Tigers -1.5</div>
-                    <div class="odds">+180</div>
-                </div>
-                <div class="play-reasoning">
-                    Batting metrics favor home team with recent form trending upward
-                </div>
+            <div class="no-plays-message">
+                <div class="no-plays-icon">📊</div>
+                <p>Sharp plays are generated from comprehensive game analysis and will appear here when available.</p>
             </div>
         </div>
-    </div>
+            
+            <!-- Subscription Plans Iframe -->
+            <div class="subscription-section">
+                <h3>Beast Sports Picks Subscription Plans</h3>
+                <iframe 
+                    src="https://www.winible.com/beastsportspicks/subscription-plans" 
+                    width="100%" 
+                    height="600" 
+                    frameborder="0" 
+                    scrolling="auto"
+                    style="border: 1px solid #e1e5e9; border-radius: 8px; margin-top: 20px;">
+                    <p>Your browser does not support iframes. <a href="https://www.winible.com/beastsportspicks/subscription-plans" target="_blank">Visit our subscription plans page</a>.</p>
+                </iframe>
+            </div>
         </main>
     </div>
 </body>

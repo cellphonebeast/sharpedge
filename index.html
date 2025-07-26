@@ -12,83 +12,26 @@
 <body>
     <header class="header">
         <div class="logo">
-            <a href="https://beastsportspicks.com/" target="_blank" class="logo-icon"><img src="logo.png" alt="The Sharp Edge" /></a>
+            <a href="https://beastsportspicks.com/" target="_blank" class="logo-icon">
+                <img src="logo.png" alt="The Sharp Edge" />
+            </a>
         </div>
         
-        <div class="nav-tabs">
-            <a href="games.html" class="nav-tab">Games</a>
-            <a href="index.html" class="nav-tab active">Dashboard</a>
-            <a href="sharp_plays.html" class="nav-tab">Sharp Plays</a>
+        <nav class="nav-tabs" role="navigation" aria-label="Main navigation">
+            <a href="index.html" class="nav-tab active" aria-current="page" aria-label="Dashboard page (currently selected)">Dashboard</a>
+            <a href="sharp_plays.html" class="nav-tab" aria-label="Navigate to Sharp Plays page">Sharp Plays</a>
+        </nav>
+        
+        <div class="header-right">
+            <div class="avatar">AI</div>
         </div>
     </header>
 
     <div class="main-container">
         <main class="main-content">
-            <div class="games-ticker-container">
-                <h2 class="ticker-title">Today's Games</h2>
-                <div class="games-ticker">
-                    
-            <div class="ticker-item" onclick="window.location.href='game_1_mia_mil_2025-07-25_1610.html'">
-                <div class="ticker-time">4:10 PM ET</div>
-                <div class="ticker-teams">MIA @ MIL</div>
-            </div>
-            <div class="ticker-item" onclick="window.location.href='game_2_ari_pit_2025-07-25_1840.html'">
-                <div class="ticker-time">6:40 PM ET</div>
-                <div class="ticker-teams">ARI @ PIT</div>
-            </div>
-            <div class="ticker-item" onclick="window.location.href='game_3_col_bal_2025-07-25_1905.html'">
-                <div class="ticker-time">7:05 PM ET</div>
-                <div class="ticker-teams">COL @ BAL</div>
-            </div>
-            <div class="ticker-item" onclick="window.location.href='game_4_phi_nyy_2025-07-25_1905.html'">
-                <div class="ticker-time">7:05 PM ET</div>
-                <div class="ticker-teams">PHI @ NYY</div>
-            </div>
-            <div class="ticker-item" onclick="window.location.href='game_5_tor_det_2025-07-25_1910.html'">
-                <div class="ticker-time">7:10 PM ET</div>
-                <div class="ticker-teams">TOR @ DET</div>
-            </div>
-            <div class="ticker-item" onclick="window.location.href='game_6_lad_bos_2025-07-25_1910.html'">
-                <div class="ticker-time">7:10 PM ET</div>
-                <div class="ticker-teams">LAD @ BOS</div>
-            </div>
-            <div class="ticker-item" onclick="window.location.href='game_7_tbr_cin_2025-07-25_1910.html'">
-                <div class="ticker-time">7:10 PM ET</div>
-                <div class="ticker-teams">TBR @ CIN</div>
-            </div>
-            <div class="ticker-item" onclick="window.location.href='game_8_sdp_stl_2025-07-25_1915.html'">
-                <div class="ticker-time">7:15 PM ET</div>
-                <div class="ticker-teams">SDP @ STL</div>
-            </div>
-            <div class="ticker-item" onclick="window.location.href='game_9_chc_chw_2025-07-25_1940.html'">
-                <div class="ticker-time">7:40 PM ET</div>
-                <div class="ticker-teams">CHC @ CHW</div>
-            </div>
-            <div class="ticker-item" onclick="window.location.href='game_10_atl_tex_2025-07-25_2005.html'">
-                <div class="ticker-time">8:05 PM ET</div>
-                <div class="ticker-teams">ATL @ TEX</div>
-            </div>
-            <div class="ticker-item" onclick="window.location.href='game_11_oak_hou_2025-07-25_2010.html'">
-                <div class="ticker-time">8:10 PM ET</div>
-                <div class="ticker-teams">OAK @ HOU</div>
-            </div>
-            <div class="ticker-item" onclick="window.location.href='game_12_wsn_min_2025-07-25_2010.html'">
-                <div class="ticker-time">8:10 PM ET</div>
-                <div class="ticker-teams">WSN @ MIN</div>
-            </div>
-            <div class="ticker-item" onclick="window.location.href='game_13_cle_kcr_2025-07-25_2010.html'">
-                <div class="ticker-time">8:10 PM ET</div>
-                <div class="ticker-teams">CLE @ KCR</div>
-            </div>
-            <div class="ticker-item" onclick="window.location.href='game_14_sea_laa_2025-07-25_2138.html'">
-                <div class="ticker-time">9:38 PM ET</div>
-                <div class="ticker-teams">SEA @ LAA</div>
-            </div>
-            <div class="ticker-item" onclick="window.location.href='game_15_nym_sfg_2025-07-25_2215.html'">
-                <div class="ticker-time">10:15 PM ET</div>
-                <div class="ticker-teams">NYM @ SFG</div>
-            </div>
-                </div>
+            <div class="centered-title">
+                <h1 class="page-title">The Sharp Edge</h1>
+                <p class="page-subtitle">Getting the edge over the sportsbooks</p>
             </div>
 
             <div class="stats-grid">
@@ -99,370 +42,308 @@
                 </div>
                 <div class="stat-card kpi-card sharp-plays clickable-card" onclick="window.location.href='sharp_plays.html'">
                     <div class="kpi-icon">⚡</div>
-                    <span class="stat-number">3</span>
+                    <span class="stat-number">0</span>
                     <div class="stat-label">Sharp Plays</div>
                     <div class="clickable-text">View Analysis →</div>
                 </div>
                 <div class="stat-card kpi-card last-updated">
                     <div class="kpi-icon">🕐</div>
-                    <span class="stat-number">12:57 PM</span>
+                    <span class="stat-number">03:11 PM</span>
                     <div class="stat-label">Last Updated</div>
                 </div>
             </div>
 
-            <div class="centered-title">
-                <h1 class="page-title">The Sharp Edge</h1>
-                <p class="page-subtitle">Getting the edge over the sportsbooks</p>
-                <p class="page-description">Comprehensive game data and analytics for informed betting decisions</p>
+            <div class="games-section">
+                <h2 class="section-title">Today's Games</h2>
+                <p class="section-subtitle">Select a game to view detailed analysis</p>
+                <div class="games-grid">
+                    
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/Philadelphia_Phillies.png" alt="PHI" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">PHI</div>
+                    </div>
+                </div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/New_York_Yankees.png" alt="NYY" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">NYY</div>
+                    </div>
+                </div>
             </div>
-
-            <div class="games-grid">
-                
-            <div class="game-card" onclick="window.location.href='game_1_mia_mil_2025-07-25_1610.html'">
-                <div class="game-header">
-                    <h3>MIA @ MIL</h3>
-                </div>
-                <div class="game-details">
-                    <p>Mia at MIL at 4:10 PM ET on 2025/07/25</p>
-                </div>
-                <div class="game-stats-list">
-                    <div class="stat-line">
-                        <span class="stat-bullet batting"></span>
-                        <span class="stat-text">Batting: MIA 2 - 4 MIL</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet pitching"></span>
-                        <span class="stat-text">Pitching: MIA 4 - 2 MIL</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet records"></span>
-                        <span class="stat-text">Records: MIA 3 - 3 MIL</span>
+            <div class="game-time">1:05 PM ET</div>
+            <a href="game_1_phi_nyy_2025-07-26_1305.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/Toronto_Blue_Jays.png" alt="TOR" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">TOR</div>
                     </div>
                 </div>
-                <div class="view-analysis-btn">View Analysis →</div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/Detroit_Tigers.png" alt="DET" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">DET</div>
+                    </div>
+                </div>
             </div>
-            <div class="game-card" onclick="window.location.href='game_2_ari_pit_2025-07-25_1840.html'">
-                <div class="game-header">
-                    <h3>ARI @ PIT</h3>
-                </div>
-                <div class="game-details">
-                    <p>ARI at PIT at 6:40 PM ET on 2025/07/25</p>
-                </div>
-                <div class="game-stats-list">
-                    <div class="stat-line">
-                        <span class="stat-bullet batting"></span>
-                        <span class="stat-text">Batting: ARI 2 - 4 PIT</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet pitching"></span>
-                        <span class="stat-text">Pitching: ARI 4 - 2 PIT</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet records"></span>
-                        <span class="stat-text">Records: ARI 3 - 3 PIT</span>
+            <div class="game-time">6:10 PM ET</div>
+            <a href="game_2_tor_det_2025-07-26_1810.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/Tampa_Bay_Rays.png" alt="TB" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">TB</div>
                     </div>
                 </div>
-                <div class="view-analysis-btn">View Analysis →</div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/Cincinnati_Reds.png" alt="CIN" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">CIN</div>
+                    </div>
+                </div>
             </div>
-            <div class="game-card" onclick="window.location.href='game_3_col_bal_2025-07-25_1905.html'">
-                <div class="game-header">
-                    <h3>COL @ BAL</h3>
-                </div>
-                <div class="game-details">
-                    <p>COL at BAL at 7:05 PM ET on 2025/07/25</p>
-                </div>
-                <div class="game-stats-list">
-                    <div class="stat-line">
-                        <span class="stat-bullet batting"></span>
-                        <span class="stat-text">Batting: COL 2 - 4 BAL</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet pitching"></span>
-                        <span class="stat-text">Pitching: COL 4 - 2 BAL</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet records"></span>
-                        <span class="stat-text">Records: COL 3 - 3 BAL</span>
+            <div class="game-time">03:11 PM ET</div>
+            <a href="game_3_tb_cin_2025-07-26.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/Arizona_Diamondbacks.png" alt="ARI" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">ARI</div>
                     </div>
                 </div>
-                <div class="view-analysis-btn">View Analysis →</div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/Pittsburgh_Pirates.png" alt="PIT" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">PIT</div>
+                    </div>
+                </div>
             </div>
-            <div class="game-card" onclick="window.location.href='game_4_phi_nyy_2025-07-25_1905.html'">
-                <div class="game-header">
-                    <h3>PHI @ NYY</h3>
-                </div>
-                <div class="game-details">
-                    <p>PHI at NYY at 7:05 PM ET on 2025/07/25</p>
-                </div>
-                <div class="game-stats-list">
-                    <div class="stat-line">
-                        <span class="stat-bullet batting"></span>
-                        <span class="stat-text">Batting: PHI 2 - 4 NYY</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet pitching"></span>
-                        <span class="stat-text">Pitching: PHI 4 - 2 NYY</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet records"></span>
-                        <span class="stat-text">Records: PHI 3 - 3 NYY</span>
+            <div class="game-time">6:40 PM ET</div>
+            <a href="game_4_ari_pit_2025-07-26_1840.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/Atlanta_Braves.png" alt="ATL" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">ATL</div>
                     </div>
                 </div>
-                <div class="view-analysis-btn">View Analysis →</div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/Texas_Rangers.png" alt="TEX" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">TEX</div>
+                    </div>
+                </div>
             </div>
-            <div class="game-card" onclick="window.location.href='game_5_tor_det_2025-07-25_1910.html'">
-                <div class="game-header">
-                    <h3>TOR @ DET</h3>
-                </div>
-                <div class="game-details">
-                    <p>TOR at DET at 7:10 PM ET on 2025/07/25</p>
-                </div>
-                <div class="game-stats-list">
-                    <div class="stat-line">
-                        <span class="stat-bullet batting"></span>
-                        <span class="stat-text">Batting: TOR 2 - 4 DET</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet pitching"></span>
-                        <span class="stat-text">Pitching: TOR 4 - 2 DET</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet records"></span>
-                        <span class="stat-text">Records: TOR 3 - 3 DET</span>
+            <div class="game-time">7:05 PM ET</div>
+            <a href="game_5_atl_tex_2025-07-26_1905.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/Colorado_Rockies.png" alt="COL" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">COL</div>
                     </div>
                 </div>
-                <div class="view-analysis-btn">View Analysis →</div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/Baltimore_Orioles.png" alt="BAL" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">BAL</div>
+                    </div>
+                </div>
             </div>
-            <div class="game-card" onclick="window.location.href='game_6_lad_bos_2025-07-25_1910.html'">
-                <div class="game-header">
-                    <h3>LAD @ BOS</h3>
-                </div>
-                <div class="game-details">
-                    <p>LAD at BOS at 7:10 PM ET on 2025/07/25</p>
-                </div>
-                <div class="game-stats-list">
-                    <div class="stat-line">
-                        <span class="stat-bullet batting"></span>
-                        <span class="stat-text">Batting: LAD 2 - 4 BOS</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet pitching"></span>
-                        <span class="stat-text">Pitching: LAD 4 - 2 BOS</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet records"></span>
-                        <span class="stat-text">Records: LAD 3 - 3 BOS</span>
+            <div class="game-time">7:05 PM ET</div>
+            <a href="game_6_col_bal_2025-07-26_1905.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/Washington_Nationals.png" alt="WSN" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">WSN</div>
                     </div>
                 </div>
-                <div class="view-analysis-btn">View Analysis →</div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/Minnesota_Twins.png" alt="MIN" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">MIN</div>
+                    </div>
+                </div>
             </div>
-            <div class="game-card" onclick="window.location.href='game_7_tbr_cin_2025-07-25_1910.html'">
-                <div class="game-header">
-                    <h3>TBR @ CIN</h3>
-                </div>
-                <div class="game-details">
-                    <p>Tbr at CIN at 7:10 PM ET on 2025/07/25</p>
-                </div>
-                <div class="game-stats-list">
-                    <div class="stat-line">
-                        <span class="stat-bullet batting"></span>
-                        <span class="stat-text">Batting: TBR 2 - 4 CIN</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet pitching"></span>
-                        <span class="stat-text">Pitching: TBR 4 - 2 CIN</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet records"></span>
-                        <span class="stat-text">Records: TBR 3 - 3 CIN</span>
+            <div class="game-time">7:10 PM ET</div>
+            <a href="game_7_wsn_min_2025-07-26_1910.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/Chicago_Cubs.png" alt="CHC" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">CHC</div>
                     </div>
                 </div>
-                <div class="view-analysis-btn">View Analysis →</div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/Chicago_White_Sox.png" alt="CHW" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">CHW</div>
+                    </div>
+                </div>
             </div>
-            <div class="game-card" onclick="window.location.href='game_8_sdp_stl_2025-07-25_1915.html'">
-                <div class="game-header">
-                    <h3>SDP @ STL</h3>
-                </div>
-                <div class="game-details">
-                    <p>Sdp at STL at 7:15 PM ET on 2025/07/25</p>
-                </div>
-                <div class="game-stats-list">
-                    <div class="stat-line">
-                        <span class="stat-bullet batting"></span>
-                        <span class="stat-text">Batting: SDP 2 - 4 STL</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet pitching"></span>
-                        <span class="stat-text">Pitching: SDP 4 - 2 STL</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet records"></span>
-                        <span class="stat-text">Records: SDP 3 - 3 STL</span>
+            <div class="game-time">7:10 PM ET</div>
+            <a href="game_8_chc_chw_2025-07-26_1910.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/Oakland_Athletics.png" alt="OAK" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">OAK</div>
                     </div>
                 </div>
-                <div class="view-analysis-btn">View Analysis →</div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/Houston_Astros.png" alt="HOU" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">HOU</div>
+                    </div>
+                </div>
             </div>
-            <div class="game-card" onclick="window.location.href='game_9_chc_chw_2025-07-25_1940.html'">
-                <div class="game-header">
-                    <h3>CHC @ CHW</h3>
-                </div>
-                <div class="game-details">
-                    <p>CHC at CHW at 7:40 PM ET on 2025/07/25</p>
-                </div>
-                <div class="game-stats-list">
-                    <div class="stat-line">
-                        <span class="stat-bullet batting"></span>
-                        <span class="stat-text">Batting: CHC 2 - 4 CHW</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet pitching"></span>
-                        <span class="stat-text">Pitching: CHC 4 - 2 CHW</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet records"></span>
-                        <span class="stat-text">Records: CHC 3 - 3 CHW</span>
+            <div class="game-time">7:10 PM ET</div>
+            <a href="game_9_oak_hou_2025-07-26_1910.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/Miami_Marlins.png" alt="MIA" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">MIA</div>
                     </div>
                 </div>
-                <div class="view-analysis-btn">View Analysis →</div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/Milwaukee_Brewers.png" alt="MIL" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">MIL</div>
+                    </div>
+                </div>
             </div>
-            <div class="game-card" onclick="window.location.href='game_10_atl_tex_2025-07-25_2005.html'">
-                <div class="game-header">
-                    <h3>ATL @ TEX</h3>
-                </div>
-                <div class="game-details">
-                    <p>ATL at TEX at 8:05 PM ET on 2025/07/25</p>
-                </div>
-                <div class="game-stats-list">
-                    <div class="stat-line">
-                        <span class="stat-bullet batting"></span>
-                        <span class="stat-text">Batting: ATL 2 - 4 TEX</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet pitching"></span>
-                        <span class="stat-text">Pitching: ATL 4 - 2 TEX</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet records"></span>
-                        <span class="stat-text">Records: ATL 3 - 3 TEX</span>
+            <div class="game-time">7:10 PM ET</div>
+            <a href="game_10_mia_mil_2025-07-26_1910.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/San_Diego_Padres.png" alt="SD" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">SD</div>
                     </div>
                 </div>
-                <div class="view-analysis-btn">View Analysis →</div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/St_Louis_Cardinals.png" alt="STL" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">STL</div>
+                    </div>
+                </div>
             </div>
-            <div class="game-card" onclick="window.location.href='game_11_oak_hou_2025-07-25_2010.html'">
-                <div class="game-header">
-                    <h3>OAK @ HOU</h3>
-                </div>
-                <div class="game-details">
-                    <p>OAK at HOU at 8:10 PM ET on 2025/07/25</p>
-                </div>
-                <div class="game-stats-list">
-                    <div class="stat-line">
-                        <span class="stat-bullet batting"></span>
-                        <span class="stat-text">Batting: OAK 2 - 4 HOU</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet pitching"></span>
-                        <span class="stat-text">Pitching: OAK 4 - 2 HOU</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet records"></span>
-                        <span class="stat-text">Records: OAK 3 - 3 HOU</span>
+            <div class="game-time">03:11 PM ET</div>
+            <a href="game_11_sd_stl_2025-07-26.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/Los_Angeles_Dodgers.png" alt="LAD" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">LAD</div>
                     </div>
                 </div>
-                <div class="view-analysis-btn">View Analysis →</div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/Boston_Red_Sox.png" alt="BOS" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">BOS</div>
+                    </div>
+                </div>
             </div>
-            <div class="game-card" onclick="window.location.href='game_12_wsn_min_2025-07-25_2010.html'">
-                <div class="game-header">
-                    <h3>WSN @ MIN</h3>
-                </div>
-                <div class="game-details">
-                    <p>Wsn at MIN at 8:10 PM ET on 2025/07/25</p>
-                </div>
-                <div class="game-stats-list">
-                    <div class="stat-line">
-                        <span class="stat-bullet batting"></span>
-                        <span class="stat-text">Batting: WSN 2 - 4 MIN</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet pitching"></span>
-                        <span class="stat-text">Pitching: WSN 4 - 2 MIN</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet records"></span>
-                        <span class="stat-text">Records: WSN 3 - 3 MIN</span>
+            <div class="game-time">7:15 PM ET</div>
+            <a href="game_12_lad_bos_2025-07-26_1915.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/Cleveland_Guardians.png" alt="CLE" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">CLE</div>
                     </div>
                 </div>
-                <div class="view-analysis-btn">View Analysis →</div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/Kansas_City_Royals.png" alt="KC" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">KC</div>
+                    </div>
+                </div>
             </div>
-            <div class="game-card" onclick="window.location.href='game_13_cle_kcr_2025-07-25_2010.html'">
-                <div class="game-header">
-                    <h3>CLE @ KCR</h3>
-                </div>
-                <div class="game-details">
-                    <p>CLE at Kcr at 8:10 PM ET on 2025/07/25</p>
-                </div>
-                <div class="game-stats-list">
-                    <div class="stat-line">
-                        <span class="stat-bullet batting"></span>
-                        <span class="stat-text">Batting: CLE 2 - 4 KCR</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet pitching"></span>
-                        <span class="stat-text">Pitching: CLE 4 - 2 KCR</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet records"></span>
-                        <span class="stat-text">Records: CLE 3 - 3 KCR</span>
+            <div class="game-time">03:11 PM ET</div>
+            <a href="game_13_cle_kc_2025-07-26.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/New_York_Mets.png" alt="NYM" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">NYM</div>
                     </div>
                 </div>
-                <div class="view-analysis-btn">View Analysis →</div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/San_Francisco_Giants.png" alt="SF" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">SF</div>
+                    </div>
+                </div>
             </div>
-            <div class="game-card" onclick="window.location.href='game_14_sea_laa_2025-07-25_2138.html'">
-                <div class="game-header">
-                    <h3>SEA @ LAA</h3>
-                </div>
-                <div class="game-details">
-                    <p>SEA at LAA at 9:38 PM ET on 2025/07/25</p>
-                </div>
-                <div class="game-stats-list">
-                    <div class="stat-line">
-                        <span class="stat-bullet batting"></span>
-                        <span class="stat-text">Batting: SEA 2 - 4 LAA</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet pitching"></span>
-                        <span class="stat-text">Pitching: SEA 4 - 2 LAA</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet records"></span>
-                        <span class="stat-text">Records: SEA 3 - 3 LAA</span>
+            <div class="game-time">03:11 PM ET</div>
+            <a href="game_14_nym_sf_2025-07-26.html" class="analyze-btn">Analyze Game</a>
+        </div>
+        <div class="game-card">
+            <div class="game-header">
+                <div class="team-info">
+                    <img src="team_logos/Seattle_Mariners.png" alt="SEA" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">SEA</div>
                     </div>
                 </div>
-                <div class="view-analysis-btn">View Analysis →</div>
+                <div class="vs-divider">@</div>
+                <div class="team-info">
+                    <img src="team_logos/Los_Angeles_Angels.png" alt="LAA" class="team-logo">
+                    <div class="team-details">
+                        <div class="team-name">LAA</div>
+                    </div>
+                </div>
             </div>
-            <div class="game-card" onclick="window.location.href='game_15_nym_sfg_2025-07-25_2215.html'">
-                <div class="game-header">
-                    <h3>NYM @ SFG</h3>
+            <div class="game-time">9:38 PM ET</div>
+            <a href="game_15_sea_laa_2025-07-26_2138.html" class="analyze-btn">Analyze Game</a>
+        </div>
                 </div>
-                <div class="game-details">
-                    <p>NYM at Sfg at 10:15 PM ET on 2025/07/25</p>
-                </div>
-                <div class="game-stats-list">
-                    <div class="stat-line">
-                        <span class="stat-bullet batting"></span>
-                        <span class="stat-text">Batting: NYM 2 - 4 SFG</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet pitching"></span>
-                        <span class="stat-text">Pitching: NYM 4 - 2 SFG</span>
-                    </div>
-                    <div class="stat-line">
-                        <span class="stat-bullet records"></span>
-                        <span class="stat-text">Records: NYM 3 - 3 SFG</span>
-                    </div>
-                </div>
-                <div class="view-analysis-btn">View Analysis →</div>
-            </div>
             </div>
         </main>
     </div>
