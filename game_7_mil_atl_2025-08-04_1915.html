@@ -27,7 +27,32 @@
 
     <div class="main-container">
         <main class="main-content">
-            <h1 class="page-title">
+            <!-- Compact Game Navigation Bar with Dropdown -->
+            <div class="game-nav-bar">
+                <div class="game-selector">
+                    <label for="game-select" class="selector-label">Jump to Game:</label>
+                    <select id="game-select" class="game-select-dropdown" aria-label="Select a game to navigate to">
+                        <option value="">Select a game...</option>
+                        <option value="game_1_sfg_pit_2025-08-04_1840.html">SFG vs PIT</option>
+<option value="game_2_min_det_2025-08-04_1840.html">MIN vs DET</option>
+<option value="game_3_hou_mia_2025-08-04_1840.html">HOU vs MIA</option>
+<option value="game_4_bal_phi_2025-08-04_1845.html">BAL vs PHI</option>
+<option value="game_5_kcr_bos_2025-08-04_1345.html">KCR vs BOS</option>
+<option value="game_6_cle_nym_2025-08-04_1910.html">CLE vs NYM</option>
+<option value="game_7_mil_atl_2025-08-04_1915.html" data-current="true" selected>MIL vs ATL</option>
+<option value="game_8_nyy_tex_2025-08-04_2005.html">NYY vs TEX</option>
+<option value="game_9_cin_chc_2025-08-04_2005.html">CIN vs CHC</option>
+<option value="game_10_tor_col_2025-08-04_1345.html">TOR vs COL</option>
+<option value="game_11_tbr_laa_2025-08-04_2138.html">TBR vs LAA</option>
+<option value="game_12_sdp_ari_2025-08-04_2140.html">SDP vs ARI</option>
+<option value="game_13_stl_lad_2025-08-04_2210.html">STL vs LAD</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Main Game Analysis Section -->
+            <div class="game-analysis-container">
+                <h1 class="page-title">
                 <img src="team_logos/Milwaukee_Brewers.png" alt="Milwaukee Brewers team logo" class="team-logo-left" loading="lazy" width="60" height="60">
                 Milwaukee Brewers at Atlanta Braves
                 <img src="team_logos/Atlanta_Braves.png" alt="Atlanta Braves team logo" class="team-logo-right" loading="lazy" width="60" height="60">
@@ -61,7 +86,7 @@
                         </div>
                     </div>
                     <div class="data-timestamp-center">
-                        <span class="data-timestamp">Data as of: August 04, 2025 at 10:14 AM ET</span>
+                        <span class="data-timestamp">Data as of: August 04, 2025 at 03:00 PM ET</span>
                     </div>
                 </div>
                 
@@ -106,75 +131,94 @@
                     </div>
                 </div>
                 
-                <!-- Sharp Money Analysis Section -->
-                <div class="line-movement-section">
-                    <h4>Sharp Money Analysis</h4>
-                    <div class="sharp-money-tables">
-                        <div class="sharp-money-table-container">
-                            <div class="sharp-money-detected-table">
-                                <h5 class="sharp-money-table-title">Sharp Money Detected</h5>
-                                <div class="sharp-money-table-content">
-                                    --
-                                </div>
-                            </div>
-                            <div class="public-fade-table">
-                                <h5 class="sharp-money-table-title">Public Fade Opportunity</h5>
-                                <div class="sharp-money-table-content">
-                                    
-    <div class="sharp-money-item">
-        <div class="line-item">
-            <span class="line-label">Fade Target:</span>
-            <span class="line-value fade-moderate"> ()</span>
-        </div>
-        <div class="line-item">
-            <span class="line-label">Bet %:</span>
-            <span class="line-value">80.0%</span>
-        </div>
-        <div class="line-item">
-            <span class="line-label">Money %:</span>
-            <span class="line-value">87.0%</span>
-        </div>
-        <div class="line-item">
-            <span class="line-label">Difference:</span>
-            <span class="line-value fade-moderate"></span>
-        </div>
-        <div class="line-item">
-            <span class="line-label">Signal:</span>
-            <span class="line-value fade-moderate">Fade public favorite</span>
-        </div>
-    </div>
-    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            <div class="win-probability">
-                <div class="win-probability-header win-probability-layout">
+            <!-- Pitcher Analysis Section -->
+            <div class="pitcher-analysis-section">
+                <div class="analysis-header pitcher-layout">
                     <div class="analysis-title-row">
-                        <h3>Win Probability SharpEdge Consensus</h3>
-                        <div class="projections-icon-main"></div>
+                        <h2 class="analysis-title">Pitcher Analysis</h2>
+                        <div class="ai-badge pitcher-icon">PITCHERS</div>
                     </div>
                 </div>
-                <div class="win-probability-content">
-                    <table class="projection-table" role="table" aria-label="Win probability comparison by model">
-                        <thead>
-                            <tr>
-                                <th scope="col">Model</th>
-                                <th scope="col">MIL</th>
-                                <th scope="col">ATL</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Win %</td>
-                                <td><strong>70%</strong></td>
-                                <td>30%</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                
+                <div class="pitcher-content">
+                    <!-- Starting Pitchers -->
+                    <div class="pitcher-subsection">
+                        <h3 class="subsection-title">Starting Pitchers</h3>
+                        <div class="pitcher-table-wrapper">
+                            <table class="pitcher-table">
+                                <thead>
+                                    <tr>
+                                        <th>Team</th>
+                                        <th>Pitcher</th>
+                                        <th>W-L</th>
+                                        <th>ERA</th>
+                                        <th>WHIP</th>
+                                        <th>K</th>
+                                        <th>BB</th>
+                                        <th>Opp AVG</th>
+                                        <th>Grade</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>MIL</td>
+                                        <td>Quinn Priester (R)</td>
+                                        <td>10-2</td>
+                                        <td>3.27</td>
+                                        <td>1.23</td>
+                                        <td>89</td>
+                                        <td>36</td>
+                                        <td>0.236</td>
+                                        <td class="pitcher-grade grade-solid-plus">Solid-plus</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ATL</td>
+                                        <td>Erick Fedde (R)</td>
+                                        <td>3-11</td>
+                                        <td>5.22</td>
+                                        <td>1.04</td>
+                                        <td>66</td>
+                                        <td>48</td>
+                                        <td>0.270</td>
+                                        <td class="pitcher-grade grade-below-average">Below-average</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Bullpen Analysis -->
+                    <div class="pitcher-subsection">
+                        <h3 class="subsection-title">Bullpen Analysis</h3>
+                        <div class="pitcher-table-wrapper">
+                            <table class="pitcher-table">
+                                <thead>
+                                    <tr>
+                                        <th>Team</th>
+                                        <th>Bullpen ERA</th>
+                                        <th>Available ERA</th>
+                                        <th>Last 3 ERA</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>MIL</td>
+                                        <td>4.01</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ATL</td>
+                                        <td>4.21</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -334,111 +378,6 @@
                 </div>
                 
                 <!-- Pitching Details Section -->
-                <div class="pitching-details">
-                    <div class="pitching-details-container">
-                        <div class="starting-pitchers-section">
-                            <h3 class="pitching-title">Starting Pitchers<div class="pitcher-icon"></div></h3>
-                            <div class="starting-pitchers-table">
-                                <table class="pitcher-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Team</th>
-                                            <th>Pitcher</th>
-                                            <th>W-L</th>
-                                            <th>ERA</th>
-                                            <th>WHIP</th>
-                                            <th>K</th>
-                                            <th>BB</th>
-                                            <th>Opp AVG</th>
-                                            <th>Grade</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>MIL</td>
-                                            <td>Quinn Priester (R)</td>
-                                            <td>10-2</td>
-                                            <td>3.27</td>
-                                            <td>1.23</td>
-                                            <td>89</td>
-                                            <td>36</td>
-                                            <td>0.236</td>
-                                            <td class="pitcher-grade grade-solid-plus">Solid-plus</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ATL</td>
-                                            <td>Erick Fedde (R)</td>
-                                            <td>3-11</td>
-                                            <td>5.22</td>
-                                            <td>1.04</td>
-                                            <td>66</td>
-                                            <td>48</td>
-                                            <td>0.270</td>
-                                            <td class="pitcher-grade grade-below-average">Below-average</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="bullpen-section">
-                            <h3 class="pitching-title">Bullpen Analysis<div class="pitcher-icon"></div></h3>
-                            <div class="bullpen-table">
-                                <table class="pitcher-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Team</th>
-                                            <th>Bullpen ERA</th>
-                                            <th>Available ERA</th>
-                                            <th>Last 3 ERA</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>MIL</td>
-                                            <td>3.93</td>
-                                            <td>3.2</td>
-                                            <td>3.93</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ATL</td>
-                                            <td>4.21</td>
-                                            <td>--</td>
-                                            <td>--</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ai-analysis">
-                <div class="analysis-header records-layout">
-                    <div class="analysis-title-row">
-                        <h2 class="analysis-title">Team Records</h2>
-                        <div class="ai-badge records-icon">RECORDS</div>
-                    </div>
-                </div>
-                
-                <div class="comparison-card records">
-                    <div class="card-header">
-                        <!-- Slice 1: Full-width centered team names -->
-                        <div class="team-names-slice">
-                            <img src="team_logos/Milwaukee_Brewers.png" alt="MIL" class="team-logo-slice" loading="lazy" width="24" height="24">
-                            MIL vs ATL
-                            <img src="team_logos/Atlanta_Braves.png" alt="ATL" class="team-logo-slice" loading="lazy" width="24" height="24">
-                        </div>
-                        <!-- Slice 2: Full-width centered timeframe -->
-                        <div class="timeframe-slice">
-                            <span class="timeframe-primary">Last 30 Days</span>
-                        </div>
-                    </div>
-                    <div class="comparison-content">
-                        <div class="team-records-flat"><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">18</div><div class="metric-center-label">Wins</div><div class="home-value stat-worse">8</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">0.783</div><div class="metric-center-label">Win Percentage</div><div class="home-value stat-worse">0.348</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">5</div><div class="metric-center-label">Losses</div><div class="home-value stat-worse">15</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">6.1</div><div class="metric-center-label">Runs per Game</div><div class="home-value stat-worse">4.8</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">0.390</div><div class="metric-center-label">Batting Average</div><div class="home-value stat-worse">0.278</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">1.076</div><div class="metric-center-label">OPS</div><div class="home-value stat-worse">0.825</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">7.6</div><div class="metric-center-label">Strikeouts per Game</div><div class="home-value stat-worse">9.0</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-worse">3.0</div><div class="metric-center-label">Walks per Game</div><div class="home-value stat-better">4.0</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">5.7</div><div class="metric-center-label">RBI per Game</div><div class="home-value stat-worse">4.8</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">0.490</div><div class="metric-center-label">On-Base Percentage</div><div class="home-value stat-worse">0.297</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">1.0</div><div class="metric-center-label">Stolen Bases per Game</div><div class="home-value stat-worse">0.3</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">10.5</div><div class="metric-center-label">Hits per Game</div><div class="home-value stat-worse">8.5</div></div></div></div>
-                    </div>
-                </div>
             </div>
 
             <div class="betql-predictions">
@@ -505,6 +444,92 @@
                 </div>
             </div>
 
+            <!-- Win Probability Section -->
+            <div class="line-movement-section">
+                <h4>Win Probability SharpEdge Consensus</h4>
+                <div class="betting-action">
+                    <div class="betting-visual full-width">
+                        <div class="betting-header">
+                            <span class="betting-type">Win %</span>
+                        </div>
+                        <div class="betting-team-row">
+                            <span class="betting-team-name">MIL</span>
+                            <div class="betting-bar-container">
+                                <div class="betting-bar-fill" style="width: <strong>70%</strong>;"><strong>70%</strong></div>
+                            </div>
+                        </div>
+                        <div class="betting-team-row">
+                            <span class="betting-team-name">ATL</span>
+                            <div class="betting-bar-container">
+                                <div class="betting-bar-fill advantage" style="width: 30%;">30%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-analysis">
+                <div class="analysis-header">
+                    <h2 class="analysis-title">9th Inning & Hits Markets</h2>
+                </div>
+                
+                <div class="hits-markets-table">
+                    <table class="projection-table">
+                        <thead>
+                            <tr>
+                                <th>Market</th>
+                                <th>MIL</th>
+                                <th>ATL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>9th Inning Score</td>
+                                <td class="chart-value ">No: --</td>
+                                <td class="chart-value high">Yes: -225</td>
+                            </tr>
+                            <tr>
+                                <td>Total Hits Over</td>
+                                <td class="chart-value">Over 8.5: -130</td>
+                                <td class="chart-value">Over 7.5: -120</td>
+                            </tr>
+                            <tr>
+                                <td>Total Hits Under</td>
+                                <td class="chart-value">Under 8.5: -115</td>
+                                <td class="chart-value">Under 7.5: -125</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="ai-analysis">
+                <div class="analysis-header records-layout">
+                    <div class="analysis-title-row">
+                        <h2 class="analysis-title">Team Records</h2>
+                        <div class="ai-badge records-icon">RECORDS</div>
+                    </div>
+                </div>
+                
+                <div class="comparison-card records">
+                    <div class="card-header">
+                        <!-- Slice 1: Full-width centered team names -->
+                        <div class="team-names-slice">
+                            <img src="team_logos/Milwaukee_Brewers.png" alt="MIL" class="team-logo-slice" loading="lazy" width="24" height="24">
+                            MIL vs ATL
+                            <img src="team_logos/Atlanta_Braves.png" alt="ATL" class="team-logo-slice" loading="lazy" width="24" height="24">
+                        </div>
+                        <!-- Slice 2: Full-width centered timeframe -->
+                        <div class="timeframe-slice">
+                            <span class="timeframe-primary">Last 30 Days</span>
+                        </div>
+                    </div>
+                    <div class="comparison-content">
+                        <div class="team-records-flat"><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">18</div><div class="metric-center-label">Wins</div><div class="home-value stat-worse">8</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">0.783</div><div class="metric-center-label">Win Percentage</div><div class="home-value stat-worse">0.348</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">5</div><div class="metric-center-label">Losses</div><div class="home-value stat-worse">15</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">6.1</div><div class="metric-center-label">Runs per Game</div><div class="home-value stat-worse">4.8</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">0.390</div><div class="metric-center-label">Batting Average</div><div class="home-value stat-worse">0.278</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">1.076</div><div class="metric-center-label">OPS</div><div class="home-value stat-worse">0.825</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">7.6</div><div class="metric-center-label">Strikeouts per Game</div><div class="home-value stat-worse">9.0</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-worse">3.0</div><div class="metric-center-label">Walks per Game</div><div class="home-value stat-better">4.0</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">5.7</div><div class="metric-center-label">RBI per Game</div><div class="home-value stat-worse">4.8</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">0.490</div><div class="metric-center-label">On-Base Percentage</div><div class="home-value stat-worse">0.297</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">1.0</div><div class="metric-center-label">Stolen Bases per Game</div><div class="home-value stat-worse">0.3</div></div></div><div class="metric-row"><div class="metric-values-full"><div class="away-value stat-better">10.5</div><div class="metric-center-label">Hits per Game</div><div class="home-value stat-worse">8.5</div></div></div></div>
+                    </div>
+                </div>
+            </div>
+
             <div class="ai-analysis">
                 <div class="analysis-header">
                     <h2 class="analysis-title">All Insights</h2>
@@ -543,6 +568,8 @@
                 </div>
             </div>
 
+            </div> <!-- End of game-analysis-container -->
+            
             <div class="game-navigation" role="navigation" aria-label="Game navigation">
                 <div class="main-dashboard-centered">
                     <a href="index.html" class="nav-link main-dashboard" aria-label="Return to main dashboard">← Main Dashboard</a>
@@ -553,103 +580,17 @@
 <a href="game_2_min_det_2025-08-04_1840.html" class="nav-link">MIN vs DET</a>
 <a href="game_3_hou_mia_2025-08-04_1840.html" class="nav-link">HOU vs MIA</a>
 <a href="game_4_bal_phi_2025-08-04_1845.html" class="nav-link">BAL vs PHI</a>
-<a href="game_5_kcr_bos_2025-08-04_1014.html" class="nav-link">KCR vs BOS</a>
+<a href="game_5_kcr_bos_2025-08-04_1345.html" class="nav-link">KCR vs BOS</a>
 <a href="game_6_cle_nym_2025-08-04_1910.html" class="nav-link">CLE vs NYM</a>
 <a href="game_8_nyy_tex_2025-08-04_2005.html" class="nav-link">NYY vs TEX</a>
 <a href="game_9_cin_chc_2025-08-04_2005.html" class="nav-link">CIN vs CHC</a>
-<a href="game_10_tor_col_2025-08-04_1014.html" class="nav-link">TOR vs COL</a>
+<a href="game_10_tor_col_2025-08-04_1345.html" class="nav-link">TOR vs COL</a>
 <a href="game_11_tbr_laa_2025-08-04_2138.html" class="nav-link">TBR vs LAA</a>
 <a href="game_12_sdp_ari_2025-08-04_2140.html" class="nav-link">SDP vs ARI</a>
 <a href="game_13_stl_lad_2025-08-04_2210.html" class="nav-link">STL vs LAD</a></div>
                 </div>
             </div>
         </main>
-
-        <aside class="sidebar">
-            <div class="sidebar-card">
-                <h3>Projections</h3>
-                <div class="projections-table">
-                    <table class="projection-table">
-                        <thead>
-                            <tr>
-                                <th>Metric</th>
-                                <th>MIL</th>
-                                <th>ATL</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Win Probability</td>
-                                <td><span class="betql-high">54.60%</span></td>
-                                <td><strong><span class="betql-low">45.40%</span></strong></td>
-                            </tr>
-                            <tr>
-                                <td>Projected Score</td>
-                                <td><span class="betql-high">4.5</span></td>
-                                <td><strong><span class="betql-low">4</span></strong></td>
-                            </tr>
-                            <tr>
-                                <td>Total Runs</td>
-                                <td colspan="2" style="text-align: center;"><strong><span class="betql-neutral">8.3</span></strong></td>
-                            </tr>
-                            <tr>
-                                <td>Team Grade</td>
-                                <td><span class="betql-grade-b">B</span></td>
-                                <td><strong><span class="betql-grade-b">B</span></strong></td>
-                            </tr>
-                            <tr>
-                                <td>Offense Grade</td>
-                                <td><span class="betql-grade-b">B-</span></td>
-                                <td><strong><span class="betql-grade-a">A</span></strong></td>
-                            </tr>
-                            <tr>
-                                <td>Defense Grade</td>
-                                <td><span class="betql-grade-b">B</span></td>
-                                <td><strong><span class="betql-grade-a">A-</span></strong></td>
-                            </tr>
-                            <tr>
-                                <td>Key Player Grade (Pitcher)</td>
-                                <td><span class="betql-grade-a">A</span></td>
-                                <td><strong><span class="betql-grade-d">D</span></strong></td>
-                            </tr>
-                            <tr>
-                                <td>First Half Score</td>
-                                <td><span class="betql-high">2.5</span></td>
-                                <td><strong><span class="betql-low">2</span></strong></td>
-                            </tr>
-                            <tr>
-                                <td>First Half Win %</td>
-                                <td><span class="betql-high">55.68%</span></td>
-                                <td><strong><span class="betql-low">44.32%</span></strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            
-            <div class="sidebar-card">
-                <h3>Home Team To Bat In 9th</h3>
-                <div class="hits-markets-table">
-                    <table class="projection-table">
-                        <thead>
-                            <tr>
-                                <th>Market</th>
-                                <th>ATL</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>9th Inning Score</td>
-                                <td class="chart-value ">--</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="ninth-inning-explanation">
-                    <p>Sportsbooks think the home team will bat in the 9th — if yes, they'll be losing; if not, they'll be up.</p>
-                </div>
-            </div>
-        </aside>
     </div>
 
     <script>
@@ -704,6 +645,26 @@
                     });
                 });
             });
+            
+            // Game Selector Dropdown Functionality
+            const gameSelect = document.getElementById('game-select');
+            
+            if (gameSelect) {
+                // Handle select change event
+                gameSelect.addEventListener('change', function() {
+                    const selectedValue = this.value;
+                    if (selectedValue) {
+                        // Navigate to the selected game
+                        window.location.href = selectedValue;
+                    }
+                });
+                
+                // Set the current game as selected
+                const currentGameOption = gameSelect.querySelector('option[data-current="true"]');
+                if (currentGameOption) {
+                    currentGameOption.selected = true;
+                }
+            }
         });
     </script>
 </body>
