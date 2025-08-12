@@ -2929,7 +2929,156 @@ body {
         --text-tertiary: #94a3b8;
         --border-primary: #334155;
         --border-secondary: #475569;
+        --gray-50: #1e293b;
+        --gray-100: #334155;
+        --gray-200: #475569;
+        --gray-300: #64748b;
+        --gray-400: #94a3b8;
+        --gray-500: #cbd5e1;
     }
+
+    /* Dark Mode Bar Chart Fixes */
+    .betting-visual {
+        background: transparent !important;
+        border: none !important;
+    }
+
+    .betting-visual:hover {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: none !important;
+    }
+
+    .betting-bar-container {
+        background: transparent !important;
+        border: none !important;
+    }
+
+    .betting-bar-fill {
+        background: #4A90E2 !important;
+        border: none !important;
+    }
+
+    .betting-bar-fill.advantage {
+        background: #4A90E2 !important;
+    }
+
+    .betting-bar-fill.minority {
+        background: #ef4444 !important;
+    }
+
+    /* Ensure text on bars is white */
+    .betting-bar-fill {
+        color: #ffffff !important;
+    }
+
+    /* Remove white backgrounds from team rows */
+    .betting-team-row {
+        background: transparent !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .betting-team-row:hover {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+    }
+
+    .betting-team-name {
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: #ffffff !important;
+    }
+
+    /* Clean up any other white containers */
+    .betting-action,
+    .betting-action-new {
+        background: transparent !important;
+    }
+
+    /* Fix split bar styles for dark mode */
+    .betting-split-bar {
+        background: transparent !important;
+        border: none !important;
+    }
+
+    .betting-bar-wrapper {
+        background: transparent !important;
+    }
+}
+
+/* Body.dark class implementation (for JS-toggled dark mode) */
+body.dark {
+    --background: #0f172a;
+    --background-alt: #1e293b;
+    --white: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-tertiary: #94a3b8;
+    --border-primary: #334155;
+    --border-secondary: #475569;
+    --gray-50: #1e293b;
+    --gray-100: #334155;
+    --gray-200: #475569;
+    --gray-300: #64748b;
+    --gray-400: #94a3b8;
+    --gray-500: #cbd5e1;
+}
+
+/* Dark Mode Bar Chart Fixes for body.dark */
+body.dark .betting-visual {
+    background: transparent !important;
+    border: none !important;
+}
+
+body.dark .betting-visual:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: none !important;
+}
+
+body.dark .betting-bar-container {
+    background: transparent !important;
+    border: none !important;
+}
+
+body.dark .betting-bar-fill {
+    background: #4A90E2 !important;
+    border: none !important;
+    color: #ffffff !important;
+}
+
+body.dark .betting-bar-fill.advantage {
+    background: #4A90E2 !important;
+}
+
+body.dark .betting-bar-fill.minority {
+    background: #ef4444 !important;
+}
+
+body.dark .betting-team-row {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark .betting-team-row:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+body.dark .betting-team-name {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+body.dark .betting-action,
+body.dark .betting-action-new {
+    background: transparent !important;
+}
+
+body.dark .betting-split-bar {
+    background: transparent !important;
+    border: none !important;
+}
+
+body.dark .betting-bar-wrapper {
+    background: transparent !important;
 }
 
 /* ====================================
