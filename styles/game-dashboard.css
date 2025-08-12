@@ -543,6 +543,112 @@ body {
 /* No additional rules needed - inline styles will work naturally */
 
 /* ====================================
+   NEW BETTING ACTION DESIGN
+   ==================================== */
+.betting-action-new {
+    margin-top: var(--spacing-lg);
+}
+
+.betting-metric {
+    margin-bottom: var(--spacing-xl);
+}
+
+.betting-metric:last-child {
+    margin-bottom: 0;
+}
+
+.betting-metric-title {
+    text-align: center;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.betting-bar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.team-label-left,
+.team-label-right {
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    min-width: 40px;
+}
+
+.team-label-left {
+    text-align: right;
+}
+
+.team-label-right {
+    text-align: left;
+}
+
+.betting-split-bar {
+    flex: 1;
+    height: 36px;
+    display: flex;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-primary);
+}
+
+.bar-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: var(--transition-normal);
+}
+
+.bar-segment.away-segment {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.bar-segment.home-segment {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+/* Dynamic color assignment - majority gets blue */
+.bar-segment[data-majority="true"] {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.bar-segment[data-majority="false"] {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.percentage-label {
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+    color: var(--text-white);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    padding: 0 var(--spacing-sm);
+}
+
+/* Ensure small percentages are still visible */
+.bar-segment {
+    min-width: 45px;
+}
+
+/* Add subtle shine effect */
+.bar-segment::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), transparent);
+}
+
+/* ====================================
    ANALYSIS SECTIONS
    ==================================== */
 .ai-analysis {
